@@ -1,0 +1,63 @@
+Quartus Prime Archive log --	Z:/project/src/Lab1Demo.qarlog
+
+Archive:	Z:/project/src/Lab1Demo.qar
+Date:		Mon Aug 21 13:36:04 2023
+Quartus Prime		17.0.0 Build 595 04/25/2017 SJ Lite Edition
+
+	=========== Files Selected: ===========
+Z:/project/src/CLK_31P5.cmp
+Z:/project/src/CLK_31P5.qip
+Z:/project/src/CLK_31P5.sip
+Z:/project/src/CLK_31P5.spd
+Z:/project/src/CLK_31P5.v
+Z:/project/src/CLK_31P5/CLK_31P5_0002.qip
+Z:/project/src/CLK_31P5/CLK_31P5_0002.v
+Z:/project/src/CLK_31P5_sim/CLK_31P5.vo
+Z:/project/src/DE10_Standard_Audio.sdc
+Z:/project/src/Lab1Demo.qpf
+Z:/project/src/Lab1Demo.qsf
+Z:/project/src/Lab1Demo_assignment_defaults.qdf
+Z:/project/src/Number_position.bsf
+Z:/project/src/Number_position.qip
+Z:/project/src/Number_position.v
+Z:/project/src/Number_position_bb.v
+Z:/project/src/RTL/AUDIO/AUDIO.bdf
+Z:/project/src/RTL/AUDIO/SinTable.sv
+Z:/project/src/RTL/AUDIO/TOP_AUDIO.bdf
+Z:/project/src/RTL/AUDIO/ToneDecoder.sv
+Z:/project/src/RTL/AUDIO/addr_counter.sv
+Z:/project/src/RTL/AUDIO/audio_codec_controller/DualSerial2parallel.sv
+Z:/project/src/RTL/AUDIO/audio_codec_controller/audio_codec_controller.sv
+Z:/project/src/RTL/AUDIO/audio_codec_controller/clock_500.sv
+Z:/project/src/RTL/AUDIO/audio_codec_controller/i2c.sv
+Z:/project/src/RTL/AUDIO/prescaler.sv
+Z:/project/src/RTL/KEYBOARDX/KBDINTF.bdf
+Z:/project/src/RTL/KEYBOARDX/TOP_KBD.bdf
+Z:/project/src/RTL/KEYBOARDX/bitrec.sv
+Z:/project/src/RTL/KEYBOARDX/byterec.sv
+Z:/project/src/RTL/KEYBOARDX/keyPad_decoder.sv
+Z:/project/src/RTL/KEYBOARDX/lpf.sv
+Z:/project/src/RTL/KEYBOARDX/random.sv
+Z:/project/src/RTL/KEYBOARDX/simple_up_counter.sv
+Z:/project/src/RTL/Seg7/SEG7.SV
+Z:/project/src/RTL/TOP.bdf
+Z:/project/src/RTL/VGA/NumbersBitMap.sv
+Z:/project/src/RTL/VGA/Smiley_Block_T.bdf
+Z:/project/src/RTL/VGA/VGA_Controller.sv
+Z:/project/src/RTL/VGA/back_ground_draw.sv
+Z:/project/src/RTL/VGA/game_controller.sv
+Z:/project/src/RTL/VGA/mif_draw.sv
+Z:/project/src/RTL/VGA/objects_mux.sv
+Z:/project/src/RTL/VGA/smileyBitMap.sv
+Z:/project/src/RTL/VGA/smiley_move.sv
+Z:/project/src/RTL/VGA/square_object.sv
+Z:/project/src/assignment_defaults.qdf
+Z:/project/src/constraints/DE10_Standard_Audio.sdc
+Z:/project/src/constraints/pin.tcl
+Z:/project/src/db/stp1_auto_stripped.stp
+Z:/project/src/output_files/Chain1.cdf
+Z:/project/src/output_files/stp1.stp
+	======= Total: 52 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
