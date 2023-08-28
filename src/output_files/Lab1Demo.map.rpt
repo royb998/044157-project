@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Lab1Demo
-Mon Aug 28 09:21:29 2023
+Mon Aug 28 10:44:34 2023
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -18,7 +18,7 @@ Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
  10. State Machine - |TOP|TOP_KBD:inst16|KBDINTF:inst|lpf:inst5|cur_st
  11. State Machine - |TOP|TOP_KBD:inst16|KBDINTF:inst|bitrec:inst4|cur_st
  12. State Machine - |TOP|TOP_KBD:inst16|KBDINTF:inst|byterec:inst3|present_state
- 13. State Machine - |TOP|Smiley_Block_T:inst1|smiley_move:inst|SM_PS
+ 13. State Machine - |TOP|Player:inst19|player_move:inst3|SM_PS
  14. Registers Protected by Synthesis
  15. Logic Cells Representing Combinational Loops
  16. Registers Removed During Synthesis
@@ -30,24 +30,22 @@ Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
  22. Source assignments for random:inst17
  23. Parameter Settings for User Entity Instance: back_ground_draw:inst12
  24. Parameter Settings for User Entity Instance: CLK_31P5:inst7|CLK_31P5_0002:clk_31p5_inst|altera_pll:altera_pll_i
- 25. Parameter Settings for User Entity Instance: Smiley_Block_T:inst1
- 26. Parameter Settings for User Entity Instance: Smiley_Block_T:inst1|square_object:inst6
- 27. Parameter Settings for User Entity Instance: Smiley_Block_T:inst1|smiley_move:inst
- 28. Parameter Settings for User Entity Instance: TOP_KBD:inst16|KBDINTF:inst|lpf:inst5
- 29. Parameter Settings for User Entity Instance: mif_draw:inst9
- 30. Parameter Settings for User Entity Instance: lpm_rom:inst5
- 31. Parameter Settings for User Entity Instance: square_object:inst13
- 32. Parameter Settings for User Entity Instance: random:inst17
- 33. Parameter Settings for User Entity Instance: AUDIO:inst18|sintable:inst1
- 34. Parameter Settings for User Entity Instance: AUDIO:inst18|addr_counter:inst9
- 35. Parameter Settings for User Entity Instance: NumbersBitMap:inst15
- 36. Port Connectivity Checks: "AUDIO:inst18|audio_codec_controller:inst|DualSerial2parallel:DualSerial2parallel_inst"
- 37. Port Connectivity Checks: "AUDIO:inst18|audio_codec_controller:inst|i2c:i2c_inst"
- 38. Port Connectivity Checks: "AUDIO:inst18|audio_codec_controller:inst|CLOCK_500:CLOCK_500_inst"
- 39. Post-Synthesis Netlist Statistics for Top Partition
- 40. Elapsed Time Per Partition
- 41. Analysis & Synthesis Messages
- 42. Analysis & Synthesis Suppressed Messages
+ 25. Parameter Settings for User Entity Instance: Player:inst19|square_object:inst2
+ 26. Parameter Settings for User Entity Instance: Player:inst19|player_move:inst3
+ 27. Parameter Settings for User Entity Instance: TOP_KBD:inst16|KBDINTF:inst|lpf:inst5
+ 28. Parameter Settings for User Entity Instance: mif_draw:inst9
+ 29. Parameter Settings for User Entity Instance: lpm_rom:inst5
+ 30. Parameter Settings for User Entity Instance: square_object:inst4
+ 31. Parameter Settings for User Entity Instance: random:inst17
+ 32. Parameter Settings for User Entity Instance: AUDIO:inst18|sintable:inst1
+ 33. Parameter Settings for User Entity Instance: AUDIO:inst18|addr_counter:inst9
+ 34. Port Connectivity Checks: "AUDIO:inst18|audio_codec_controller:inst|DualSerial2parallel:DualSerial2parallel_inst"
+ 35. Port Connectivity Checks: "AUDIO:inst18|audio_codec_controller:inst|i2c:i2c_inst"
+ 36. Port Connectivity Checks: "AUDIO:inst18|audio_codec_controller:inst|CLOCK_500:CLOCK_500_inst"
+ 37. Post-Synthesis Netlist Statistics for Top Partition
+ 38. Elapsed Time Per Partition
+ 39. Analysis & Synthesis Messages
+ 40. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -74,13 +72,13 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Aug 28 09:21:28 2023       ;
+; Analysis & Synthesis Status     ; Successful - Mon Aug 28 10:44:33 2023       ;
 ; Quartus Prime Version           ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                   ; Lab1Demo                                    ;
 ; Top-level Entity Name           ; TOP                                         ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 435                                         ;
+; Total registers                 ; 381                                         ;
 ; Total pins                      ; 62                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 2,457,600                                   ;
@@ -201,63 +199,62 @@ agreement for further details.
 +----------------------------+-------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                      ;
-+------------------------------------------------------------+-----------------+------------------------------------+------------------------------------------------------------------------------+----------+
-; File Name with User-Entered Path                           ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                                 ; Library  ;
-+------------------------------------------------------------+-----------------+------------------------------------+------------------------------------------------------------------------------+----------+
-; RTL/VGA_BG.mif                                             ; yes             ; User Memory Initialization File    ; Z:/project/src/RTL/VGA_BG.mif                                                ;          ;
-; RTL/VGA/mine_placer.sv                                     ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/VGA/mine_placer.sv                                        ;          ;
-; RTL/VGA/mine_bitmap.sv                                     ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/VGA/mine_bitmap.sv                                        ;          ;
-; RTL/VGA/mif_draw.sv                                        ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/VGA/mif_draw.sv                                           ;          ;
-; RTL/VGA/game_controller.sv                                 ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/VGA/game_controller.sv                                    ;          ;
-; RTL/VGA/Smiley_Block_T.bdf                                 ; yes             ; User Block Diagram/Schematic File  ; Z:/project/src/RTL/VGA/Smiley_Block_T.bdf                                    ;          ;
-; RTL/VGA/smileyBitMap.sv                                    ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/VGA/smileyBitMap.sv                                       ;          ;
-; RTL/VGA/square_object.sv                                   ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/VGA/square_object.sv                                      ;          ;
-; RTL/VGA/back_ground_draw.sv                                ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/VGA/back_ground_draw.sv                                   ;          ;
-; RTL/VGA/smiley_move.sv                                     ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/VGA/smiley_move.sv                                        ;          ;
-; RTL/VGA/objects_mux.sv                                     ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/VGA/objects_mux.sv                                        ;          ;
-; RTL/VGA/VGA_Controller.sv                                  ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/VGA/VGA_Controller.sv                                     ;          ;
-; RTL/VGA/NumbersBitMap.sv                                   ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/VGA/NumbersBitMap.sv                                      ;          ;
-; RTL/KEYBOARDX/TOP_KBD.bdf                                  ; yes             ; User Block Diagram/Schematic File  ; Z:/project/src/RTL/KEYBOARDX/TOP_KBD.bdf                                     ;          ;
-; RTL/KEYBOARDX/lpf.sv                                       ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/KEYBOARDX/lpf.sv                                          ;          ;
-; RTL/KEYBOARDX/keyPad_decoder.sv                            ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/KEYBOARDX/keyPad_decoder.sv                               ;          ;
-; RTL/KEYBOARDX/KBDINTF.bdf                                  ; yes             ; User Block Diagram/Schematic File  ; Z:/project/src/RTL/KEYBOARDX/KBDINTF.bdf                                     ;          ;
-; RTL/KEYBOARDX/byterec.sv                                   ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/KEYBOARDX/byterec.sv                                      ;          ;
-; RTL/KEYBOARDX/bitrec.sv                                    ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/KEYBOARDX/bitrec.sv                                       ;          ;
-; RTL/KEYBOARDX/random.sv                                    ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/KEYBOARDX/random.sv                                       ;          ;
-; RTL/Seg7/SEG7.SV                                           ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/Seg7/SEG7.SV                                              ;          ;
-; RTL/AUDIO/SinTable.sv                                      ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/AUDIO/SinTable.sv                                         ;          ;
-; RTL/AUDIO/addr_counter.sv                                  ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/AUDIO/addr_counter.sv                                     ;          ;
-; RTL/AUDIO/prescaler.sv                                     ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/AUDIO/prescaler.sv                                        ;          ;
-; RTL/AUDIO/ToneDecoder.sv                                   ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/AUDIO/ToneDecoder.sv                                      ;          ;
-; RTL/AUDIO/AUDIO.bdf                                        ; yes             ; User Block Diagram/Schematic File  ; Z:/project/src/RTL/AUDIO/AUDIO.bdf                                           ;          ;
-; RTL/AUDIO/audio_codec_controller/i2c.sv                    ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/AUDIO/audio_codec_controller/i2c.sv                       ;          ;
-; RTL/AUDIO/audio_codec_controller/DualSerial2parallel.sv    ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/AUDIO/audio_codec_controller/DualSerial2parallel.sv       ;          ;
-; RTL/AUDIO/audio_codec_controller/clock_500.sv              ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/AUDIO/audio_codec_controller/clock_500.sv                 ;          ;
-; RTL/AUDIO/audio_codec_controller/audio_codec_controller.sv ; yes             ; User SystemVerilog HDL File        ; Z:/project/src/RTL/AUDIO/audio_codec_controller/audio_codec_controller.sv    ;          ;
-; Number_position.v                                          ; yes             ; User Wizard-Generated File         ; Z:/project/src/Number_position.v                                             ;          ;
-; CLK_31P5.v                                                 ; yes             ; User Wizard-Generated File         ; Z:/project/src/CLK_31P5.v                                                    ; CLK_31P5 ;
-; CLK_31P5/CLK_31P5_0002.v                                   ; yes             ; User Verilog HDL File              ; Z:/project/src/CLK_31P5/CLK_31P5_0002.v                                      ; CLK_31P5 ;
-; RTL/TOP.bdf                                                ; yes             ; User Block Diagram/Schematic File  ; Z:/project/src/RTL/TOP.bdf                                                   ;          ;
-; altera_pll.v                                               ; yes             ; Megafunction                       ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altera_pll.v          ;          ;
-; lpm_rom.tdf                                                ; yes             ; Megafunction                       ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/lpm_rom.tdf           ;          ;
-; altrom.inc                                                 ; yes             ; Megafunction                       ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altrom.inc            ;          ;
-; aglobal170.inc                                             ; yes             ; Megafunction                       ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/aglobal170.inc        ;          ;
-; altrom.tdf                                                 ; yes             ; Megafunction                       ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altrom.tdf            ;          ;
-; memmodes.inc                                               ; yes             ; Megafunction                       ; c:/intelfpga_lite/17.0/quartus/libraries/others/maxplus2/memmodes.inc        ;          ;
-; lpm_decode.inc                                             ; yes             ; Megafunction                       ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/lpm_decode.inc        ;          ;
-; lpm_mux.inc                                                ; yes             ; Megafunction                       ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/lpm_mux.inc           ;          ;
-; altsyncram.inc                                             ; yes             ; Megafunction                       ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altsyncram.inc        ;          ;
-; altsyncram.tdf                                             ; yes             ; Megafunction                       ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altsyncram.tdf        ;          ;
-; stratix_ram_block.inc                                      ; yes             ; Megafunction                       ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/stratix_ram_block.inc ;          ;
-; a_rdenreg.inc                                              ; yes             ; Megafunction                       ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/a_rdenreg.inc         ;          ;
-; altram.inc                                                 ; yes             ; Megafunction                       ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altram.inc            ;          ;
-; altdpram.inc                                               ; yes             ; Megafunction                       ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altdpram.inc          ;          ;
-; db/altsyncram_8071.tdf                                     ; yes             ; Auto-Generated Megafunction        ; Z:/project/src/db/altsyncram_8071.tdf                                        ;          ;
-; db/decode_s2a.tdf                                          ; yes             ; Auto-Generated Megafunction        ; Z:/project/src/db/decode_s2a.tdf                                             ;          ;
-; db/mux_jhb.tdf                                             ; yes             ; Auto-Generated Megafunction        ; Z:/project/src/db/mux_jhb.tdf                                                ;          ;
-+------------------------------------------------------------+-----------------+------------------------------------+------------------------------------------------------------------------------+----------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                          ;
++------------------------------------------------------------+-----------------+----------------------------------------+------------------------------------------------------------------------------+----------+
+; File Name with User-Entered Path                           ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                                 ; Library  ;
++------------------------------------------------------------+-----------------+----------------------------------------+------------------------------------------------------------------------------+----------+
+; RTL/VGA/mine_placer.sv                                     ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/VGA/mine_placer.sv                                        ;          ;
+; RTL/VGA/mine_bitmap.sv                                     ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/VGA/mine_bitmap.sv                                        ;          ;
+; RTL/VGA/player_move.sv                                     ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/VGA/player_move.sv                                        ;          ;
+; RTL/VGA/Player.bdf                                         ; yes             ; User Block Diagram/Schematic File      ; Z:/project/src/RTL/VGA/Player.bdf                                            ;          ;
+; RTL/VGA/playerBitMap.sv                                    ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/VGA/playerBitMap.sv                                       ;          ;
+; RTL/VGA/mif_draw.sv                                        ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/VGA/mif_draw.sv                                           ;          ;
+; RTL/VGA/game_controller.sv                                 ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/VGA/game_controller.sv                                    ;          ;
+; RTL/VGA/square_object.sv                                   ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/VGA/square_object.sv                                      ;          ;
+; RTL/VGA/back_ground_draw.sv                                ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/VGA/back_ground_draw.sv                                   ;          ;
+; RTL/VGA/objects_mux.sv                                     ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/VGA/objects_mux.sv                                        ;          ;
+; RTL/VGA/VGA_Controller.sv                                  ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/VGA/VGA_Controller.sv                                     ;          ;
+; RTL/KEYBOARDX/TOP_KBD.bdf                                  ; yes             ; User Block Diagram/Schematic File      ; Z:/project/src/RTL/KEYBOARDX/TOP_KBD.bdf                                     ;          ;
+; RTL/KEYBOARDX/lpf.sv                                       ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/KEYBOARDX/lpf.sv                                          ;          ;
+; RTL/KEYBOARDX/keyPad_decoder.sv                            ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/KEYBOARDX/keyPad_decoder.sv                               ;          ;
+; RTL/KEYBOARDX/KBDINTF.bdf                                  ; yes             ; User Block Diagram/Schematic File      ; Z:/project/src/RTL/KEYBOARDX/KBDINTF.bdf                                     ;          ;
+; RTL/KEYBOARDX/byterec.sv                                   ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/KEYBOARDX/byterec.sv                                      ;          ;
+; RTL/KEYBOARDX/bitrec.sv                                    ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/KEYBOARDX/bitrec.sv                                       ;          ;
+; RTL/KEYBOARDX/random.sv                                    ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/KEYBOARDX/random.sv                                       ;          ;
+; RTL/Seg7/SEG7.SV                                           ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/Seg7/SEG7.SV                                              ;          ;
+; RTL/AUDIO/SinTable.sv                                      ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/AUDIO/SinTable.sv                                         ;          ;
+; RTL/AUDIO/addr_counter.sv                                  ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/AUDIO/addr_counter.sv                                     ;          ;
+; RTL/AUDIO/prescaler.sv                                     ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/AUDIO/prescaler.sv                                        ;          ;
+; RTL/AUDIO/ToneDecoder.sv                                   ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/AUDIO/ToneDecoder.sv                                      ;          ;
+; RTL/AUDIO/AUDIO.bdf                                        ; yes             ; User Block Diagram/Schematic File      ; Z:/project/src/RTL/AUDIO/AUDIO.bdf                                           ;          ;
+; RTL/AUDIO/audio_codec_controller/i2c.sv                    ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/AUDIO/audio_codec_controller/i2c.sv                       ;          ;
+; RTL/AUDIO/audio_codec_controller/DualSerial2parallel.sv    ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/AUDIO/audio_codec_controller/DualSerial2parallel.sv       ;          ;
+; RTL/AUDIO/audio_codec_controller/clock_500.sv              ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/AUDIO/audio_codec_controller/clock_500.sv                 ;          ;
+; RTL/AUDIO/audio_codec_controller/audio_codec_controller.sv ; yes             ; User SystemVerilog HDL File            ; Z:/project/src/RTL/AUDIO/audio_codec_controller/audio_codec_controller.sv    ;          ;
+; Number_position.v                                          ; yes             ; User Wizard-Generated File             ; Z:/project/src/Number_position.v                                             ;          ;
+; CLK_31P5.v                                                 ; yes             ; User Wizard-Generated File             ; Z:/project/src/CLK_31P5.v                                                    ; CLK_31P5 ;
+; CLK_31P5/CLK_31P5_0002.v                                   ; yes             ; User Verilog HDL File                  ; Z:/project/src/CLK_31P5/CLK_31P5_0002.v                                      ; CLK_31P5 ;
+; RTL/TOP.bdf                                                ; yes             ; User Block Diagram/Schematic File      ; Z:/project/src/RTL/TOP.bdf                                                   ;          ;
+; altera_pll.v                                               ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altera_pll.v          ;          ;
+; lpm_rom.tdf                                                ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/lpm_rom.tdf           ;          ;
+; altrom.inc                                                 ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altrom.inc            ;          ;
+; aglobal170.inc                                             ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/aglobal170.inc        ;          ;
+; altrom.tdf                                                 ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altrom.tdf            ;          ;
+; memmodes.inc                                               ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/others/maxplus2/memmodes.inc        ;          ;
+; lpm_decode.inc                                             ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/lpm_decode.inc        ;          ;
+; lpm_mux.inc                                                ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/lpm_mux.inc           ;          ;
+; altsyncram.inc                                             ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altsyncram.inc        ;          ;
+; altsyncram.tdf                                             ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altsyncram.tdf        ;          ;
+; stratix_ram_block.inc                                      ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/stratix_ram_block.inc ;          ;
+; a_rdenreg.inc                                              ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/a_rdenreg.inc         ;          ;
+; altram.inc                                                 ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altram.inc            ;          ;
+; altdpram.inc                                               ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altdpram.inc          ;          ;
+; db/altsyncram_8071.tdf                                     ; yes             ; Auto-Generated Megafunction            ; Z:/project/src/db/altsyncram_8071.tdf                                        ;          ;
+; RTL/VGA_BG.mif                                             ; yes             ; Auto-Found Memory Initialization File  ; Z:/project/src/RTL/VGA_BG.mif                                                ;          ;
+; db/decode_s2a.tdf                                          ; yes             ; Auto-Generated Megafunction            ; Z:/project/src/db/decode_s2a.tdf                                             ;          ;
+; db/mux_jhb.tdf                                             ; yes             ; Auto-Generated Megafunction            ; Z:/project/src/db/mux_jhb.tdf                                                ;          ;
++------------------------------------------------------------+-----------------+----------------------------------------+------------------------------------------------------------------------------+----------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------------+
@@ -265,16 +262,16 @@ agreement for further details.
 +---------------------------------------------+-----------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                             ;
 +---------------------------------------------+-----------------------------------------------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 652                                                                               ;
+; Estimate of Logic utilization (ALMs needed) ; 604                                                                               ;
 ;                                             ;                                                                                   ;
-; Combinational ALUT usage for logic          ; 1014                                                                              ;
-;     -- 7 input functions                    ; 8                                                                                 ;
-;     -- 6 input functions                    ; 261                                                                               ;
-;     -- 5 input functions                    ; 135                                                                               ;
-;     -- 4 input functions                    ; 131                                                                               ;
-;     -- <=3 input functions                  ; 479                                                                               ;
+; Combinational ALUT usage for logic          ; 909                                                                               ;
+;     -- 7 input functions                    ; 5                                                                                 ;
+;     -- 6 input functions                    ; 275                                                                               ;
+;     -- 5 input functions                    ; 148                                                                               ;
+;     -- 4 input functions                    ; 137                                                                               ;
+;     -- <=3 input functions                  ; 344                                                                               ;
 ;                                             ;                                                                                   ;
-; Dedicated logic registers                   ; 435                                                                               ;
+; Dedicated logic registers                   ; 381                                                                               ;
 ;                                             ;                                                                                   ;
 ; I/O pins                                    ; 62                                                                                ;
 ; Total MLAB memory bits                      ; 0                                                                                 ;
@@ -286,9 +283,9 @@ agreement for further details.
 ;     -- PLLs                                 ; 1                                                                                 ;
 ;                                             ;                                                                                   ;
 ; Maximum fan-out node                        ; CLK_31P5:inst7|CLK_31P5_0002:clk_31p5_inst|altera_pll:altera_pll_i|outclk_wire[0] ;
-; Maximum fan-out                             ; 748                                                                               ;
-; Total fan-out                               ; 10117                                                                             ;
-; Average fan-out                             ; 5.36                                                                              ;
+; Maximum fan-out                             ; 696                                                                               ;
+; Total fan-out                               ; 9665                                                                              ;
+; Average fan-out                             ; 5.60                                                                              ;
 +---------------------------------------------+-----------------------------------------------------------------------------------+
 
 
@@ -297,31 +294,31 @@ agreement for further details.
 +---------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------+------------------------+--------------+
 ; Compilation Hierarchy Node                              ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                       ; Entity Name            ; Library Name ;
 +---------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------+------------------------+--------------+
-; |TOP                                                    ; 1014 (1)            ; 435 (0)                   ; 2457600           ; 0          ; 62   ; 0            ; |TOP                                                                                                      ; TOP                    ; work         ;
+; |TOP                                                    ; 909 (1)             ; 381 (0)                   ; 2457600           ; 0          ; 62   ; 0            ; |TOP                                                                                                      ; TOP                    ; work         ;
 ;    |AUDIO:inst18|                                       ; 209 (0)             ; 139 (0)                   ; 0                 ; 0          ; 0    ; 0            ; |TOP|AUDIO:inst18                                                                                         ; AUDIO                  ; work         ;
-;       |ToneDecoder:inst4|                               ; 9 (9)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |TOP|AUDIO:inst18|ToneDecoder:inst4                                                                       ; ToneDecoder            ; work         ;
+;       |ToneDecoder:inst4|                               ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |TOP|AUDIO:inst18|ToneDecoder:inst4                                                                       ; ToneDecoder            ; work         ;
 ;       |addr_counter:inst9|                              ; 10 (10)             ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |TOP|AUDIO:inst18|addr_counter:inst9                                                                      ; addr_counter           ; work         ;
 ;       |audio_codec_controller:inst|                     ; 108 (0)             ; 90 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |TOP|AUDIO:inst18|audio_codec_controller:inst                                                             ; audio_codec_controller ; work         ;
 ;          |CLOCK_500:CLOCK_500_inst|                     ; 32 (32)             ; 19 (19)                   ; 0                 ; 0          ; 0    ; 0            ; |TOP|AUDIO:inst18|audio_codec_controller:inst|CLOCK_500:CLOCK_500_inst                                    ; CLOCK_500              ; work         ;
 ;          |DualSerial2parallel:DualSerial2parallel_inst| ; 46 (46)             ; 51 (51)                   ; 0                 ; 0          ; 0    ; 0            ; |TOP|AUDIO:inst18|audio_codec_controller:inst|DualSerial2parallel:DualSerial2parallel_inst                ; DualSerial2parallel    ; work         ;
 ;          |i2c:i2c_inst|                                 ; 30 (30)             ; 20 (20)                   ; 0                 ; 0          ; 0    ; 0            ; |TOP|AUDIO:inst18|audio_codec_controller:inst|i2c:i2c_inst                                                ; i2c                    ; work         ;
-;       |prescaler:inst3|                                 ; 45 (45)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |TOP|AUDIO:inst18|prescaler:inst3                                                                         ; prescaler              ; work         ;
+;       |prescaler:inst3|                                 ; 47 (47)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |TOP|AUDIO:inst18|prescaler:inst3                                                                         ; prescaler              ; work         ;
 ;       |sintable:inst1|                                  ; 37 (37)             ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |TOP|AUDIO:inst18|sintable:inst1                                                                          ; sintable               ; work         ;
 ;    |CLK_31P5:inst7|                                     ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |TOP|CLK_31P5:inst7                                                                                       ; CLK_31P5               ; CLK_31P5     ;
 ;       |CLK_31P5_0002:clk_31p5_inst|                     ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |TOP|CLK_31P5:inst7|CLK_31P5_0002:clk_31p5_inst                                                           ; CLK_31P5_0002          ; CLK_31P5     ;
 ;          |altera_pll:altera_pll_i|                      ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |TOP|CLK_31P5:inst7|CLK_31P5_0002:clk_31p5_inst|altera_pll:altera_pll_i                                   ; altera_pll             ; work         ;
+;    |Player:inst19|                                      ; 262 (0)             ; 90 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |TOP|Player:inst19                                                                                        ; Player                 ; work         ;
+;       |playerBitMap:inst|                               ; 54 (54)             ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |TOP|Player:inst19|playerBitMap:inst                                                                      ; playerBitMap           ; work         ;
+;       |player_move:inst3|                               ; 149 (149)           ; 70 (70)                   ; 0                 ; 0          ; 0    ; 0            ; |TOP|Player:inst19|player_move:inst3                                                                      ; player_move            ; work         ;
+;       |square_object:inst2|                             ; 59 (59)             ; 11 (11)                   ; 0                 ; 0          ; 0    ; 0            ; |TOP|Player:inst19|square_object:inst2                                                                    ; square_object          ; work         ;
 ;    |SEG7:inst10|                                        ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |TOP|SEG7:inst10                                                                                          ; SEG7                   ; work         ;
-;    |Smiley_Block_T:inst1|                               ; 399 (0)             ; 154 (0)                   ; 0                 ; 0          ; 0    ; 0            ; |TOP|Smiley_Block_T:inst1                                                                                 ; Smiley_Block_T         ; work         ;
-;       |smileyBitMap:inst1|                              ; 54 (54)             ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |TOP|Smiley_Block_T:inst1|smileyBitMap:inst1                                                              ; smileyBitMap           ; work         ;
-;       |smiley_move:inst|                                ; 285 (285)           ; 134 (134)                 ; 0                 ; 0          ; 0    ; 0            ; |TOP|Smiley_Block_T:inst1|smiley_move:inst                                                                ; smiley_move            ; work         ;
-;       |square_object:inst6|                             ; 60 (60)             ; 11 (11)                   ; 0                 ; 0          ; 0    ; 0            ; |TOP|Smiley_Block_T:inst1|square_object:inst6                                                             ; square_object          ; work         ;
-;    |TOP_KBD:inst16|                                     ; 65 (0)              ; 58 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |TOP|TOP_KBD:inst16                                                                                       ; TOP_KBD                ; work         ;
+;    |TOP_KBD:inst16|                                     ; 67 (0)              ; 60 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |TOP|TOP_KBD:inst16                                                                                       ; TOP_KBD                ; work         ;
 ;       |KBDINTF:inst|                                    ; 38 (0)              ; 51 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |TOP|TOP_KBD:inst16|KBDINTF:inst                                                                          ; KBDINTF                ; work         ;
 ;          |bitrec:inst4|                                 ; 14 (14)             ; 27 (27)                   ; 0                 ; 0          ; 0    ; 0            ; |TOP|TOP_KBD:inst16|KBDINTF:inst|bitrec:inst4                                                             ; bitrec                 ; work         ;
 ;          |byterec:inst3|                                ; 19 (19)             ; 19 (19)                   ; 0                 ; 0          ; 0    ; 0            ; |TOP|TOP_KBD:inst16|KBDINTF:inst|byterec:inst3                                                            ; byterec                ; work         ;
 ;          |lpf:inst5|                                    ; 5 (5)               ; 5 (5)                     ; 0                 ; 0          ; 0    ; 0            ; |TOP|TOP_KBD:inst16|KBDINTF:inst|lpf:inst5                                                                ; lpf                    ; work         ;
-;       |keyPad_decoder:inst2|                            ; 27 (27)             ; 7 (7)                     ; 0                 ; 0          ; 0    ; 0            ; |TOP|TOP_KBD:inst16|keyPad_decoder:inst2                                                                  ; keyPad_decoder         ; work         ;
-;    |VGA_Controller:inst|                                ; 96 (96)             ; 26 (26)                   ; 0                 ; 0          ; 0    ; 0            ; |TOP|VGA_Controller:inst                                                                                  ; VGA_Controller         ; work         ;
+;       |keyPad_decoder:inst2|                            ; 29 (29)             ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |TOP|TOP_KBD:inst16|keyPad_decoder:inst2                                                                  ; keyPad_decoder         ; work         ;
+;    |VGA_Controller:inst|                                ; 94 (94)             ; 26 (26)                   ; 0                 ; 0          ; 0    ; 0            ; |TOP|VGA_Controller:inst                                                                                  ; VGA_Controller         ; work         ;
 ;    |back_ground_draw:inst12|                            ; 44 (44)             ; 25 (25)                   ; 0                 ; 0          ; 0    ; 0            ; |TOP|back_ground_draw:inst12                                                                              ; back_ground_draw       ; work         ;
 ;    |game_controller:inst2|                              ; 7 (7)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |TOP|game_controller:inst2                                                                                ; game_controller        ; work         ;
 ;    |lpm_rom:inst5|                                      ; 150 (0)             ; 6 (0)                     ; 2457600           ; 0          ; 0    ; 0            ; |TOP|lpm_rom:inst5                                                                                        ; lpm_rom                ; work         ;
@@ -330,10 +327,10 @@ agreement for further details.
 ;             |altsyncram_8071:auto_generated|            ; 150 (0)             ; 6 (6)                     ; 2457600           ; 0          ; 0    ; 0            ; |TOP|lpm_rom:inst5|altrom:srom|altsyncram:rom_block|altsyncram_8071:auto_generated                        ; altsyncram_8071        ; work         ;
 ;                |decode_s2a:rden_decode|                 ; 38 (38)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |TOP|lpm_rom:inst5|altrom:srom|altsyncram:rom_block|altsyncram_8071:auto_generated|decode_s2a:rden_decode ; decode_s2a             ; work         ;
 ;                |mux_jhb:mux2|                           ; 112 (112)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |TOP|lpm_rom:inst5|altrom:srom|altsyncram:rom_block|altsyncram_8071:auto_generated|mux_jhb:mux2           ; mux_jhb                ; work         ;
-;    |mine_bitmap:inst14|                                 ; 2 (2)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |TOP|mine_bitmap:inst14                                                                                   ; mine_bitmap            ; work         ;
+;    |mine_bitmap:inst14|                                 ; 38 (38)             ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |TOP|mine_bitmap:inst14                                                                                   ; mine_bitmap            ; work         ;
 ;    |objects_mux:inst8|                                  ; 10 (10)             ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |TOP|objects_mux:inst8                                                                                    ; objects_mux            ; work         ;
 ;    |random:inst17|                                      ; 7 (7)               ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |TOP|random:inst17                                                                                        ; random                 ; work         ;
-;    |square_object:inst13|                               ; 17 (17)             ; 6 (6)                     ; 0                 ; 0          ; 0    ; 0            ; |TOP|square_object:inst13                                                                                 ; square_object          ; work         ;
+;    |square_object:inst4|                                ; 13 (13)             ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |TOP|square_object:inst4                                                                                  ; square_object          ; work         ;
 +---------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------+------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -401,17 +398,18 @@ Encoding Type:  One-Hot
 
 
 Encoding Type:  One-Hot
-+----------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |TOP|Smiley_Block_T:inst1|smiley_move:inst|SM_PS                                                                       ;
-+--------------------------+--------------------------+-----------------------+---------------+---------------+--------------------------+
-; Name                     ; SM_PS.POSITION_CHANGE_ST ; SM_PS.WAIT_FOR_EOF_ST ; SM_PS.MOVE_ST ; SM_PS.IDLE_ST ; SM_PS.POSITION_LIMITS_ST ;
-+--------------------------+--------------------------+-----------------------+---------------+---------------+--------------------------+
-; SM_PS.IDLE_ST            ; 0                        ; 0                     ; 0             ; 0             ; 0                        ;
-; SM_PS.MOVE_ST            ; 0                        ; 0                     ; 1             ; 1             ; 0                        ;
-; SM_PS.WAIT_FOR_EOF_ST    ; 0                        ; 1                     ; 0             ; 1             ; 0                        ;
-; SM_PS.POSITION_CHANGE_ST ; 1                        ; 0                     ; 0             ; 1             ; 0                        ;
-; SM_PS.POSITION_LIMITS_ST ; 0                        ; 0                     ; 0             ; 1             ; 1                        ;
-+--------------------------+--------------------------+-----------------------+---------------+---------------+--------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |TOP|Player:inst19|player_move:inst3|SM_PS                                                                                                ;
++--------------------------+--------------------------+--------------------------+-----------------------+---------------+---------------+------------------+
+; Name                     ; SM_PS.POSITION_LIMITS_ST ; SM_PS.POSITION_CHANGE_ST ; SM_PS.WAIT_FOR_EOF_ST ; SM_PS.MOVE_ST ; SM_PS.IDLE_ST ; SM_PS.INITIAL_ST ;
++--------------------------+--------------------------+--------------------------+-----------------------+---------------+---------------+------------------+
+; SM_PS.INITIAL_ST         ; 0                        ; 0                        ; 0                     ; 0             ; 0             ; 0                ;
+; SM_PS.IDLE_ST            ; 0                        ; 0                        ; 0                     ; 0             ; 1             ; 1                ;
+; SM_PS.MOVE_ST            ; 0                        ; 0                        ; 0                     ; 1             ; 0             ; 1                ;
+; SM_PS.WAIT_FOR_EOF_ST    ; 0                        ; 0                        ; 1                     ; 0             ; 0             ; 1                ;
+; SM_PS.POSITION_CHANGE_ST ; 0                        ; 1                        ; 0                     ; 0             ; 0             ; 1                ;
+; SM_PS.POSITION_LIMITS_ST ; 1                        ; 0                        ; 0                     ; 0             ; 0             ; 1                ;
++--------------------------+--------------------------+--------------------------+-----------------------+---------------+---------------+------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -433,8 +431,8 @@ Encoding Type:  One-Hot
 +--------------------------------------------------------+---+
 ; Logic Cell Name                                        ;   ;
 +--------------------------------------------------------+---+
-; mine_placer:inst4|Add1~1                               ;   ;
-; mine_placer:inst4|Add1~0                               ;   ;
+; mine_placer:inst1|Add1~1                               ;   ;
+; mine_placer:inst1|Add1~0                               ;   ;
 ; Number of logic cells representing combinational loops ; 2 ;
 +--------------------------------------------------------+---+
 Note: All cells listed above may not be present at the end of synthesis due to various synthesis optimizations.
@@ -626,25 +624,32 @@ Note: All cells listed above may not be present at the end of synthesis due to v
 ; AUDIO:inst18|audio_codec_controller:inst|i2c:i2c_inst|SD[19]                   ; Stuck at GND due to stuck port data_in                                   ;
 ; AUDIO:inst18|audio_codec_controller:inst|i2c:i2c_inst|SD[18]                   ; Stuck at VCC due to stuck port data_in                                   ;
 ; AUDIO:inst18|audio_codec_controller:inst|i2c:i2c_inst|SD[16,17]                ; Stuck at GND due to stuck port data_in                                   ;
-; mine_bitmap:inst14|rgb_out[1,3,4,6]                                            ; Merged with mine_bitmap:inst14|rgb_out[7]                                ;
-; mine_bitmap:inst14|rgb_out[0,2]                                                ; Merged with mine_bitmap:inst14|rgb_out[5]                                ;
-; Smiley_Block_T:inst1|smileyBitMap:inst1|RGBout[6]                              ; Merged with Smiley_Block_T:inst1|smileyBitMap:inst1|RGBout[7]            ;
-; Smiley_Block_T:inst1|smileyBitMap:inst1|RGBout[0,1]                            ; Merged with Smiley_Block_T:inst1|smileyBitMap:inst1|RGBout[4]            ;
+; Player:inst19|playerBitMap:inst|RGBout[6]                                      ; Merged with Player:inst19|playerBitMap:inst|RGBout[7]                    ;
+; Player:inst19|playerBitMap:inst|RGBout[0,1]                                    ; Merged with Player:inst19|playerBitMap:inst|RGBout[4]                    ;
 ; AUDIO:inst18|audio_codec_controller:inst|i2c:i2c_inst|SD[7,8,14,15]            ; Merged with AUDIO:inst18|audio_codec_controller:inst|i2c:i2c_inst|SD[13] ;
 ; AUDIO:inst18|audio_codec_controller:inst|i2c:i2c_inst|SD[3,5]                  ; Merged with AUDIO:inst18|audio_codec_controller:inst|i2c:i2c_inst|SD[2]  ;
-; square_object:inst13|offsetX[0,1]                                              ; Lost fanout                                                              ;
-; square_object:inst13|offsetY[1,2]                                              ; Lost fanout                                                              ;
+; Player:inst19|player_move:inst3|Xspeed_PS[4,6..9,11..31]                       ; Merged with Player:inst19|player_move:inst3|Xspeed_PS[10]                ;
+; Player:inst19|player_move:inst3|Xspeed_PS[1,2]                                 ; Merged with Player:inst19|player_move:inst3|Xspeed_PS[0]                 ;
+; Player:inst19|player_move:inst3|Yspeed_PS[4,6..9,11..31]                       ; Merged with Player:inst19|player_move:inst3|Yspeed_PS[10]                ;
+; Player:inst19|player_move:inst3|Yspeed_PS[1,2]                                 ; Merged with Player:inst19|player_move:inst3|Yspeed_PS[0]                 ;
+; square_object:inst4|offsetY[0]                                                 ; Lost fanout                                                              ;
+; square_object:inst4|offsetX[0]                                                 ; Lost fanout                                                              ;
 ; AUDIO:inst18|audio_codec_controller:inst|i2c:i2c_inst|SD[13]                   ; Stuck at GND due to stuck port data_in                                   ;
+; Player:inst19|player_move:inst3|Yspeed_PS[0]                                   ; Stuck at GND due to stuck port data_in                                   ;
+; Player:inst19|player_move:inst3|Xspeed_PS[0]                                   ; Stuck at GND due to stuck port data_in                                   ;
+; Player:inst19|player_move:inst3|Yposition_PS[0..2]                             ; Stuck at GND due to stuck port data_in                                   ;
+; Player:inst19|player_move:inst3|Xposition_PS[0..2]                             ; Stuck at GND due to stuck port data_in                                   ;
 ; TOP_KBD:inst16|KBDINTF:inst|bitrec:inst4|cur_st~4                              ; Lost fanout                                                              ;
 ; TOP_KBD:inst16|KBDINTF:inst|bitrec:inst4|cur_st~5                              ; Lost fanout                                                              ;
 ; TOP_KBD:inst16|KBDINTF:inst|byterec:inst3|present_state~4                      ; Lost fanout                                                              ;
 ; TOP_KBD:inst16|KBDINTF:inst|byterec:inst3|present_state~5                      ; Lost fanout                                                              ;
 ; TOP_KBD:inst16|KBDINTF:inst|byterec:inst3|present_state~6                      ; Lost fanout                                                              ;
 ; TOP_KBD:inst16|KBDINTF:inst|byterec:inst3|present_state~7                      ; Lost fanout                                                              ;
-; Smiley_Block_T:inst1|smiley_move:inst|SM_PS~4                                  ; Lost fanout                                                              ;
-; Smiley_Block_T:inst1|smiley_move:inst|SM_PS~5                                  ; Lost fanout                                                              ;
+; Player:inst19|player_move:inst3|SM_PS~4                                        ; Lost fanout                                                              ;
+; Player:inst19|player_move:inst3|SM_PS~5                                        ; Lost fanout                                                              ;
+; Player:inst19|player_move:inst3|SM_PS~6                                        ; Lost fanout                                                              ;
 ; AUDIO:inst18|audio_codec_controller:inst|CLOCK_500:CLOCK_500_inst|address[4,5] ; Stuck at GND due to stuck port data_in                                   ;
-; Total Number of Removed Registers = 214                                        ;                                                                          ;
+; Total Number of Removed Registers = 271                                        ;                                                                          ;
 +--------------------------------------------------------------------------------+--------------------------------------------------------------------------+
 
 
@@ -665,12 +670,12 @@ Note: All cells listed above may not be present at the end of synthesis due to v
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 435   ;
-; Number of registers using Synchronous Clear  ; 107   ;
-; Number of registers using Synchronous Load   ; 144   ;
-; Number of registers using Asynchronous Clear ; 368   ;
+; Total registers                              ; 381   ;
+; Number of registers using Synchronous Clear  ; 113   ;
+; Number of registers using Synchronous Load   ; 73    ;
+; Number of registers using Asynchronous Clear ; 310   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 272   ;
+; Number of registers using Clock Enable       ; 207   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -680,7 +685,7 @@ Note: All cells listed above may not be present at the end of synthesis due to v
 +------------------------------------------------------------------+---------+
 ; Inverted Register                                                ; Fan out ;
 +------------------------------------------------------------------+---------+
-; VGA_Controller:inst|oVGA_VS                                      ; 5       ;
+; VGA_Controller:inst|oVGA_VS                                      ; 7       ;
 ; VGA_Controller:inst|oVGA_HS                                      ; 4       ;
 ; back_ground_draw:inst12|redBits[2]                               ; 1       ;
 ; back_ground_draw:inst12|redBits[1]                               ; 1       ;
@@ -691,8 +696,8 @@ Note: All cells listed above may not be present at the end of synthesis due to v
 ; back_ground_draw:inst12|blueBits[1]                              ; 1       ;
 ; back_ground_draw:inst12|blueBits[0]                              ; 1       ;
 ; VGA_Controller:inst|oVGA_HS_d                                    ; 1       ;
-; random:inst17|dout[0]                                            ; 3       ;
-; random:inst17|dout[2]                                            ; 6       ;
+; random:inst17|dout[0]                                            ; 2       ;
+; random:inst17|dout[2]                                            ; 7       ;
 ; AUDIO:inst18|audio_codec_controller:inst|i2c:i2c_inst|SDO        ; 2       ;
 ; AUDIO:inst18|audio_codec_controller:inst|i2c:i2c_inst|I2C_clk_0  ; 2       ;
 ; AUDIO:inst18|audio_codec_controller:inst|i2c:i2c_inst|I2C_clk_en ; 2       ;
@@ -705,22 +710,27 @@ Note: All cells listed above may not be present at the end of synthesis due to v
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                           ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |TOP|Smiley_Block_T:inst1|smileyBitMap:inst1|RGBout[3]                                                               ;
-; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |TOP|AUDIO:inst18|audio_codec_controller:inst|i2c:i2c_inst|SD_COUNTER[5]                                             ;
-; 3:1                ; 15 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |TOP|AUDIO:inst18|audio_codec_controller:inst|DualSerial2parallel:DualSerial2parallel_inst|DACdata_fifo[11]          ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |TOP|AUDIO:inst18|audio_codec_controller:inst|DualSerial2parallel:DualSerial2parallel_inst|serial_cnt[6]             ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |TOP|objects_mux:inst8|RGBOut[7]                                                                                     ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |TOP|Smiley_Block_T:inst1|smileyBitMap:inst1|HitEdgeCode[1]                                                          ;
-; 6:1                ; 32 bits   ; 128 LEs       ; 64 LEs               ; 64 LEs                 ; Yes        ; |TOP|Smiley_Block_T:inst1|smiley_move:inst|Xposition_PS[5]                                                           ;
-; 6:1                ; 32 bits   ; 128 LEs       ; 64 LEs               ; 64 LEs                 ; Yes        ; |TOP|Smiley_Block_T:inst1|smiley_move:inst|Yposition_PS[14]                                                          ;
-; 9:1                ; 32 bits   ; 192 LEs       ; 32 LEs               ; 160 LEs                ; Yes        ; |TOP|Smiley_Block_T:inst1|smiley_move:inst|Xspeed_PS[18]                                                             ;
-; 11:1               ; 31 bits   ; 217 LEs       ; 62 LEs               ; 155 LEs                ; Yes        ; |TOP|Smiley_Block_T:inst1|smiley_move:inst|Yspeed_PS[22]                                                             ;
-; 10:1               ; 3 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; Yes        ; |TOP|TOP_KBD:inst16|keyPad_decoder:inst2|key[0]                                                                      ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |TOP|Smiley_Block_T:inst1|smileyBitMap:inst1|Mux46                                                                   ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |TOP|TOP_KBD:inst16|keyPad_decoder:inst2|keyIsPressed[4]                                                             ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |TOP|Player:inst19|playerBitMap:inst|RGBout[4]                                                                       ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |TOP|AUDIO:inst18|audio_codec_controller:inst|i2c:i2c_inst|SD_COUNTER[3]                                             ;
+; 3:1                ; 15 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |TOP|AUDIO:inst18|audio_codec_controller:inst|DualSerial2parallel:DualSerial2parallel_inst|DACdata_fifo[15]          ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |TOP|AUDIO:inst18|audio_codec_controller:inst|DualSerial2parallel:DualSerial2parallel_inst|serial_cnt[15]            ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |TOP|objects_mux:inst8|RGBOut[3]                                                                                     ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |TOP|Player:inst19|playerBitMap:inst|HitEdgeCode[1]                                                                  ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |TOP|mine_bitmap:inst14|rgb_out[7]                                                                                   ;
+; 10:1               ; 4 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; Yes        ; |TOP|mine_bitmap:inst14|rgb_out[3]                                                                                   ;
+; 6:1                ; 32 bits   ; 128 LEs       ; 64 LEs               ; 64 LEs                 ; Yes        ; |TOP|Player:inst19|player_move:inst3|Xposition_PS[21]                                                                ;
+; 6:1                ; 32 bits   ; 128 LEs       ; 64 LEs               ; 64 LEs                 ; Yes        ; |TOP|Player:inst19|player_move:inst3|Yposition_PS[12]                                                                ;
+; 12:1               ; 2 bits    ; 16 LEs        ; 10 LEs               ; 6 LEs                  ; Yes        ; |TOP|Player:inst19|player_move:inst3|Xspeed_PS[10]                                                                   ;
+; 12:1               ; 2 bits    ; 16 LEs        ; 10 LEs               ; 6 LEs                  ; Yes        ; |TOP|Player:inst19|player_move:inst3|Yspeed_PS[5]                                                                    ;
+; 10:1               ; 3 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; Yes        ; |TOP|TOP_KBD:inst16|keyPad_decoder:inst2|key[2]                                                                      ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |TOP|mine_bitmap:inst14|Mux47                                                                                        ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |TOP|mine_bitmap:inst14|Mux47                                                                                        ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |TOP|Player:inst19|playerBitMap:inst|Mux46                                                                           ;
 ; 5:1                ; 8 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |TOP|lpm_rom:inst5|altrom:srom|altsyncram:rom_block|altsyncram_8071:auto_generated|mux_jhb:mux2|l3_w6_n4_mux_dataout ;
-; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |TOP|Smiley_Block_T:inst1|smiley_move:inst|Selector128                                                               ;
 ; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |TOP|TOP_KBD:inst16|KBDINTF:inst|bitrec:inst4|Selector6                                                              ;
-; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |TOP|TOP_KBD:inst16|KBDINTF:inst|bitrec:inst4|Selector4                                                              ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |TOP|TOP_KBD:inst16|KBDINTF:inst|bitrec:inst4|Selector8                                                              ;
+; 9:1                ; 3 bits    ; 18 LEs        ; 12 LEs               ; 6 LEs                  ; No         ; |TOP|Player:inst19|player_move:inst3|Selector128                                                                     ;
 ; 8:1                ; 3 bits    ; 15 LEs        ; 12 LEs               ; 3 LEs                  ; No         ; |TOP|TOP_KBD:inst16|KBDINTF:inst|byterec:inst3|Selector1                                                             ;
 ; 33:1               ; 8 bits    ; 176 LEs       ; 176 LEs              ; 0 LEs                  ; No         ; |TOP|lpm_rom:inst5|altrom:srom|altsyncram:rom_block|altsyncram_8071:auto_generated|mux_jhb:mux2|l6_w0_n0_mux_dataout ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------------------------+
@@ -1006,42 +1016,29 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: Smiley_Block_T:inst1 ;
-+-----------------+-------+-----------------------------------------+
-; Parameter Name  ; Value ; Type                                    ;
-+-----------------+-------+-----------------------------------------+
-; initial_x       ; 20    ; Unsigned Hexadecimal                    ;
-; initial_x_speed ; 20    ; Untyped                                 ;
-; initial_y       ; 20    ; Unsigned Hexadecimal                    ;
-; initial_y_speed ; 20    ; Untyped                                 ;
-+-----------------+-------+-----------------------------------------+
++--------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Player:inst19|square_object:inst2 ;
++-----------------+-------+------------------------------------------------------+
+; Parameter Name  ; Value ; Type                                                 ;
++-----------------+-------+------------------------------------------------------+
+; OBJECT_WIDTH_X  ; 32    ; Signed Integer                                       ;
+; OBJECT_HEIGHT_Y ; 32    ; Signed Integer                                       ;
+; OBJECT_COLOR    ; 00    ; Unsigned Binary                                      ;
++-----------------+-------+------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: Smiley_Block_T:inst1|square_object:inst6 ;
-+-----------------+-------+-------------------------------------------------------------+
-; Parameter Name  ; Value ; Type                                                        ;
-+-----------------+-------+-------------------------------------------------------------+
-; OBJECT_WIDTH_X  ; 20    ; Unsigned Hexadecimal                                        ;
-; OBJECT_HEIGHT_Y ; 20    ; Unsigned Hexadecimal                                        ;
-; OBJECT_COLOR    ; 00    ; Unsigned Binary                                             ;
-+-----------------+-------+-------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: Smiley_Block_T:inst1|smiley_move:inst ;
-+-----------------+-------+----------------------------------------------------------+
-; Parameter Name  ; Value ; Type                                                     ;
-+-----------------+-------+----------------------------------------------------------+
-; INITIAL_X       ; 0032  ; Signed Integer                                           ;
-; INITIAL_Y       ; 0032  ; Signed Integer                                           ;
-; INITIAL_X_SPEED ; 20    ; Signed Integer                                           ;
-; INITIAL_Y_SPEED ; 20    ; Signed Integer                                           ;
-; Y_ACCEL         ; -2    ; Signed Integer                                           ;
-+-----------------+-------+----------------------------------------------------------+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Player:inst19|player_move:inst3 ;
++-----------------+-------+----------------------------------------------------+
+; Parameter Name  ; Value ; Type                                               ;
++-----------------+-------+----------------------------------------------------+
+; INITIAL_X       ; 280   ; Signed Integer                                     ;
+; INITIAL_Y       ; 185   ; Signed Integer                                     ;
+; INITIAL_X_SPEED ; 40    ; Signed Integer                                     ;
+; INITIAL_Y_SPEED ; 40    ; Signed Integer                                     ;
+; Y_ACCEL         ; -5    ; Signed Integer                                     ;
++-----------------+-------+----------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -1085,15 +1082,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: square_object:inst13 ;
-+-----------------+----------+--------------------------------------+
-; Parameter Name  ; Value    ; Type                                 ;
-+-----------------+----------+--------------------------------------+
-; OBJECT_WIDTH_X  ; 20       ; Unsigned Hexadecimal                 ;
-; OBJECT_HEIGHT_Y ; 20       ; Unsigned Hexadecimal                 ;
-; OBJECT_COLOR    ; 11000111 ; Unsigned Binary                      ;
-+-----------------+----------+--------------------------------------+
++------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: square_object:inst4 ;
++-----------------+----------+-------------------------------------+
+; Parameter Name  ; Value    ; Type                                ;
++-----------------+----------+-------------------------------------+
+; OBJECT_WIDTH_X  ; 20       ; Unsigned Hexadecimal                ;
+; OBJECT_HEIGHT_Y ; 20       ; Unsigned Hexadecimal                ;
+; OBJECT_COLOR    ; 11000111 ; Unsigned Binary                     ;
++-----------------+----------+-------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -1126,16 +1123,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+-----------------------------------------------------+
 ; COUNT_SIZE     ; 8     ; Signed Integer                                      ;
 +----------------+-------+-----------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+-------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: NumbersBitMap:inst15 ;
-+----------------+----------+---------------------------------------+
-; Parameter Name ; Value    ; Type                                  ;
-+----------------+----------+---------------------------------------+
-; digit_color    ; 10100101 ; Unsigned Binary                       ;
-+----------------+----------+---------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -1172,42 +1159,40 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 435                         ;
-;     CLR               ; 111                         ;
+; arriav_ff             ; 381                         ;
+;     CLR               ; 119                         ;
 ;     CLR SCLR          ; 44                          ;
-;     CLR SLD           ; 1                           ;
-;     ENA               ; 33                          ;
-;     ENA CLR           ; 34                          ;
+;     ENA               ; 27                          ;
+;     ENA CLR           ; 38                          ;
 ;     ENA CLR SCLR      ; 51                          ;
-;     ENA CLR SLD       ; 127                         ;
-;     ENA SCLR          ; 11                          ;
-;     ENA SCLR SLD      ; 1                           ;
+;     ENA CLR SLD       ; 58                          ;
+;     ENA SCLR          ; 18                          ;
 ;     ENA SLD           ; 15                          ;
-;     plain             ; 7                           ;
+;     plain             ; 11                          ;
 ; arriav_io_obuf        ; 8                           ;
-; arriav_lcell_comb     ; 1020                        ;
-;     arith             ; 354                         ;
+; arriav_lcell_comb     ; 914                         ;
+;     arith             ; 253                         ;
 ;         0 data inputs ; 4                           ;
-;         1 data inputs ; 242                         ;
-;         2 data inputs ; 67                          ;
+;         1 data inputs ; 147                         ;
+;         2 data inputs ; 61                          ;
 ;         4 data inputs ; 18                          ;
 ;         5 data inputs ; 23                          ;
-;     extend            ; 8                           ;
-;         7 data inputs ; 8                           ;
-;     normal            ; 658                         ;
+;     extend            ; 5                           ;
+;         7 data inputs ; 5                           ;
+;     normal            ; 656                         ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 19                          ;
-;         2 data inputs ; 59                          ;
-;         3 data inputs ; 92                          ;
-;         4 data inputs ; 113                         ;
-;         5 data inputs ; 112                         ;
-;         6 data inputs ; 261                         ;
+;         2 data inputs ; 48                          ;
+;         3 data inputs ; 68                          ;
+;         4 data inputs ; 119                         ;
+;         5 data inputs ; 125                         ;
+;         6 data inputs ; 275                         ;
 ; boundary_port         ; 62                          ;
 ; generic_pll           ; 1                           ;
 ; stratixv_ram_block    ; 304                         ;
 ;                       ;                             ;
-; Max LUT depth         ; 7.60                        ;
-; Average LUT depth     ; 4.30                        ;
+; Max LUT depth         ; 8.30                        ;
+; Average LUT depth     ; 3.99                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1226,13 +1211,20 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Mon Aug 28 09:21:08 2023
+    Info: Processing started: Mon Aug 28 10:44:03 2023
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Lab1Demo -c Lab1Demo
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file rtl/vga/mine_placer.sv
     Info (12023): Found entity 1: mine_placer File: Z:/project/src/RTL/VGA/mine_placer.sv Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file rtl/vga/mine_bitmap.sv
     Info (12023): Found entity 1: mine_bitmap File: Z:/project/src/RTL/VGA/mine_bitmap.sv Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/vga/player_move.sv
+    Info (12023): Found entity 1: player_move File: Z:/project/src/RTL/VGA/player_move.sv Line: 10
+Warning (12019): Can't analyze file -- file RTL/player_move.sv is missing
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/vga/player.bdf
+    Info (12023): Found entity 1: Player
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/vga/playerbitmap.sv
+    Info (12023): Found entity 1: playerBitMap File: Z:/project/src/RTL/VGA/playerBitMap.sv Line: 7
 Info (12021): Found 1 design units, including 1 entities, in source file rtl/vga/mif_draw.sv
     Info (12023): Found entity 1: mif_draw File: Z:/project/src/RTL/VGA/mif_draw.sv Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file rtl/vga/game_controller.sv
@@ -1393,14 +1385,15 @@ Warning (10230): Verilog HDL assignment warning at VGA_Controller.sv(62): trunca
 Warning (10230): Verilog HDL assignment warning at VGA_Controller.sv(64): truncated value with size 32 to match size of target (19) File: Z:/project/src/RTL/VGA/VGA_Controller.sv Line: 64
 Warning (10230): Verilog HDL assignment warning at VGA_Controller.sv(74): truncated value with size 11 to match size of target (1) File: Z:/project/src/RTL/VGA/VGA_Controller.sv Line: 74
 Info (12128): Elaborating entity "objects_mux" for hierarchy "objects_mux:inst8"
-Info (12128): Elaborating entity "Smiley_Block_T" for hierarchy "Smiley_Block_T:inst1"
-Info (12128): Elaborating entity "smileyBitMap" for hierarchy "Smiley_Block_T:inst1|smileyBitMap:inst1"
+Info (12128): Elaborating entity "Player" for hierarchy "Player:inst19"
+Info (12128): Elaborating entity "playerBitMap" for hierarchy "Player:inst19|playerBitMap:inst"
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "object_colors" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "hit_colors" into its bus
-Info (12128): Elaborating entity "square_object" for hierarchy "Smiley_Block_T:inst1|square_object:inst6"
-Info (12128): Elaborating entity "smiley_move" for hierarchy "Smiley_Block_T:inst1|smiley_move:inst"
-Warning (10230): Verilog HDL assignment warning at smiley_move.sv(213): truncated value with size 32 to match size of target (11) File: Z:/project/src/RTL/VGA/smiley_move.sv Line: 213
-Warning (10230): Verilog HDL assignment warning at smiley_move.sv(214): truncated value with size 32 to match size of target (11) File: Z:/project/src/RTL/VGA/smiley_move.sv Line: 214
+Info (12128): Elaborating entity "square_object" for hierarchy "Player:inst19|square_object:inst2"
+Info (12128): Elaborating entity "player_move" for hierarchy "Player:inst19|player_move:inst3"
+Warning (10036): Verilog HDL or VHDL warning at player_move.sv(65): object "toggle_x_key_D" assigned a value but never read File: Z:/project/src/RTL/VGA/player_move.sv Line: 65
+Warning (10230): Verilog HDL assignment warning at player_move.sv(250): truncated value with size 32 to match size of target (11) File: Z:/project/src/RTL/VGA/player_move.sv Line: 250
+Warning (10230): Verilog HDL assignment warning at player_move.sv(251): truncated value with size 32 to match size of target (11) File: Z:/project/src/RTL/VGA/player_move.sv Line: 251
 Info (12128): Elaborating entity "TOP_KBD" for hierarchy "TOP_KBD:inst16"
 Info (12128): Elaborating entity "keyPad_decoder" for hierarchy "TOP_KBD:inst16|keyPad_decoder:inst2"
 Warning (10230): Verilog HDL assignment warning at keyPad_decoder.sv(47): truncated value with size 32 to match size of target (4) File: Z:/project/src/RTL/KEYBOARDX/keyPad_decoder.sv Line: 47
@@ -1437,10 +1430,9 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/mux_
     Info (12023): Found entity 1: mux_jhb File: Z:/project/src/db/mux_jhb.tdf Line: 23
 Info (12128): Elaborating entity "mux_jhb" for hierarchy "lpm_rom:inst5|altrom:srom|altsyncram:rom_block|altsyncram_8071:auto_generated|mux_jhb:mux2" File: Z:/project/src/db/altsyncram_8071.tdf Line: 41
 Info (12128): Elaborating entity "mine_bitmap" for hierarchy "mine_bitmap:inst14"
-Warning (10230): Verilog HDL assignment warning at mine_bitmap.sv(26): truncated value with size 32768 to match size of target (8192) File: Z:/project/src/RTL/VGA/mine_bitmap.sv Line: 26
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "object_colors" into its bus
-Info (12128): Elaborating entity "square_object" for hierarchy "square_object:inst13"
-Info (12128): Elaborating entity "mine_placer" for hierarchy "mine_placer:inst4"
+Info (12128): Elaborating entity "square_object" for hierarchy "square_object:inst4"
+Info (12128): Elaborating entity "mine_placer" for hierarchy "mine_placer:inst1"
 Info (12128): Elaborating entity "random" for hierarchy "random:inst17"
 Warning (10230): Verilog HDL assignment warning at random.sv(22): truncated value with size 32 to match size of target (4) File: Z:/project/src/RTL/KEYBOARDX/random.sv Line: 22
 Warning (10230): Verilog HDL assignment warning at random.sv(28): truncated value with size 32 to match size of target (4) File: Z:/project/src/RTL/KEYBOARDX/random.sv Line: 28
@@ -1469,8 +1461,6 @@ Warning (10230): Verilog HDL assignment warning at addr_counter.sv(32): truncate
 Info (12128): Elaborating entity "prescaler" for hierarchy "AUDIO:inst18|prescaler:inst3"
 Info (12128): Elaborating entity "ToneDecoder" for hierarchy "AUDIO:inst18|ToneDecoder:inst4"
 Info (12128): Elaborating entity "SEG7" for hierarchy "SEG7:inst10"
-Info (12128): Elaborating entity "NumbersBitMap" for hierarchy "NumbersBitMap:inst15"
-Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "number_bitmap" into its bus
 Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
     Warning (13049): Converted tri-state buffer "lpm_rom:inst5|otri[7]" feeding internal logic into a wire File: c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/lpm_rom.tdf Line: 68
     Warning (13049): Converted tri-state buffer "lpm_rom:inst5|otri[6]" feeding internal logic into a wire File: c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/lpm_rom.tdf Line: 68
@@ -1500,24 +1490,24 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "greenLight" is stuck at GND
     Warning (13410): Pin "OVGA[26]" is stuck at VCC
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 12 registers lost all their fanouts during netlist optimizations.
+Info (17049): 11 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file Z:/project/src/output_files/Lab1Demo.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 8 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 1 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "AUD_ADCDAT"
-Info (21057): Implemented 1444 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1345 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 5 input pins
     Info (21059): Implemented 49 output pins
     Info (21060): Implemented 8 bidirectional pins
-    Info (21061): Implemented 1077 logic cells
+    Info (21061): Implemented 978 logic cells
     Info (21064): Implemented 304 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 75 warnings
-    Info: Peak virtual memory: 4926 megabytes
-    Info: Processing ended: Mon Aug 28 09:21:29 2023
-    Info: Elapsed time: 00:00:21
-    Info: Total CPU time (on all processors): 00:00:28
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 76 warnings
+    Info: Peak virtual memory: 4929 megabytes
+    Info: Processing ended: Mon Aug 28 10:44:34 2023
+    Info: Elapsed time: 00:00:31
+    Info: Total CPU time (on all processors): 00:00:27
 
 
 +------------------------------------------+

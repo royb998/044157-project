@@ -102,10 +102,10 @@ begin
 //------------
         IDLE_ST: begin
 //------------
-		 Xspeed_NS  = INITIAL_X_SPEED ; 
-		 Yspeed_NS  = INITIAL_Y_SPEED  ; 
-		 Xposition_NS = INITIAL_X * FIXED_POINT_MULTIPLIER ; 
-		 Yposition_NS = INITIAL_Y * FIXED_POINT_MULTIPLIER ; 
+		 Xspeed_NS  = INITIAL_X_SPEED ;
+		 Yspeed_NS  = INITIAL_Y_SPEED  ;
+		 Xposition_NS = INITIAL_X * FIXED_POINT_MULTIPLIER ;
+		 Yposition_NS = INITIAL_Y * FIXED_POINT_MULTIPLIER ;
 
          if (startOfFrame)
                 SM_NS = MOVE_ST;
@@ -178,31 +178,31 @@ begin
                         begin
                             Xposition_NS = x_FRAME_LEFT;
                             if (Xspeed_PS < 0) // moving to the left
-                                    Xspeed_NS = -Xspeed_PS; // change direction
+                                    Xspeed_NS = 0; // change direction
                         end;
 
                  if (Xposition_PS > x_FRAME_RIGHT)
                         begin
                             Xposition_NS = x_FRAME_RIGHT;
                             if (Xspeed_PS > 0) // moving to the right
-                                    Xspeed_NS = -Xspeed_PS; // change direction
+                                    Xspeed_NS = 0; // change direction
                         end;
 
                 if (Yposition_PS < y_FRAME_TOP)
                         begin
                             Yposition_NS = y_FRAME_TOP;
                             if (Yspeed_PS < 0) // moving to the top
-                                    Yspeed_NS = -Yspeed_PS; // change direction
+                                    Yspeed_NS = 0; // change direction
                         end;
 
                  if (Yposition_PS > y_FRAME_BOTTOM)
                         begin
                             Yposition_NS = y_FRAME_BOTTOM;
                             if (Yspeed_PS > 0) // moving to the bottom
-                                    Yspeed_NS = -Yspeed_PS; // change direction
+                                    Yspeed_NS = 0; // stp
                         end;
 
-            SM_NS = MOVE_ST;
+            SM_NS = IDLE_ST;
 
         end
 

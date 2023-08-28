@@ -47,6 +47,7 @@ set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name SMART_RECOMPILE ON
 set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
 set_location_assignment PIN_AF14 -to CLOCK_50
+set_location_assignment PIN_AJ4 -to resetN
 set_location_assignment PIN_AK4 -to KEY[1]
 set_location_assignment PIN_AA14 -to KEY[2]
 set_location_assignment PIN_AA15 -to KEY[3]
@@ -163,102 +164,8 @@ set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUD_ADCDAT -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUDOUT[0] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUDOUT[1] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUDOUT[2] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUDOUT[3] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUDOUT[4] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUDOUT[5] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUDOUT[6] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUDOUT[7] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BG_RGB[0] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BG_RGB[1] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BG_RGB[2] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BG_RGB[3] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BG_RGB[4] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BG_RGB[5] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BG_RGB[6] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BG_RGB[7] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CLOCK_50 -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX0[0] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX0[1] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX0[2] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX0[3] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX0[4] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX0[5] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX0[6] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[0] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[1] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[2] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[3] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[4] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[5] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[6] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[7] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[8] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[9] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[10] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[11] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[12] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[13] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[14] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[15] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[16] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[17] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[18] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[19] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[20] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[21] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[22] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[23] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[24] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[25] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[26] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[27] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to OVGA[28] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to PS2_CLK -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to PS2_DAT -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to greenLight -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to redLight -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to yellowLight -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to resetN_pin -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to bordersDrawReq -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[3] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clk -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to drawing_request -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to inside_rectangle -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_x[0] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_x[1] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_x[2] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_x[3] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_x[4] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_x[5] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_x[6] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_x[7] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_x[8] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_x[9] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_x[10] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_y[0] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_y[1] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_y[2] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_y[3] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_y[4] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_y[5] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_y[6] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_y[7] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_y[8] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_y[9] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_y[10] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_out[0] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_out[1] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_out[2] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_out[3] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_out[4] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_out[5] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_out[6] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_out[7] -entity mine_placer
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rst_n -entity mine_placer
+set_global_assignment -name ENABLE_SIGNALTAP ON
+set_global_assignment -name USE_SIGNALTAP_FILE output_files/stp1.stp
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUD_ADCDAT
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUDOUT[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUDOUT[1]
@@ -276,6 +183,7 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BG_RGB[4]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BG_RGB[5]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BG_RGB[6]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to BG_RGB[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to boardersDrawReq
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CLOCK_50
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX0[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX0[1]
@@ -318,53 +226,23 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to PS2_DAT
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to greenLight
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to redLight
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to yellowLight
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to resetNN
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to altera_reserved_tck
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to altera_reserved_tdi
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to altera_reserved_tdo
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to altera_reserved_tms
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to resetN_pin
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to bordersDrawReq
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to clk
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to drawing_request
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to inside_rectangle
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_x[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_x[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_x[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_x[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_x[4]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_x[5]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_x[6]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_x[7]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_x[8]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_x[9]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_x[10]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_y[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_y[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_y[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_y[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_y[4]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_y[5]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_y[6]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_y[7]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_y[8]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_y[9]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to offset_y[10]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_out[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_out[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_out[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_out[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_out[4]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_out[5]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_out[6]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_out[7]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rst_n
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -entity mine_placer -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -entity mine_placer -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -entity mine_placer -section_id Top
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -entity mine_placer -section_id Top
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name MIF_FILE RTL/VGA_BG.mif
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to bordersDrawReq
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[3]
 set_global_assignment -name SYSTEMVERILOG_FILE RTL/VGA/mine_placer.sv
 set_global_assignment -name SYSTEMVERILOG_FILE RTL/VGA/mine_bitmap.sv
+set_global_assignment -name SYSTEMVERILOG_FILE RTL/VGA/player_move.sv
+set_global_assignment -name SYSTEMVERILOG_FILE RTL/player_move.sv
+set_global_assignment -name BDF_FILE RTL/VGA/Player.bdf
+set_global_assignment -name SYSTEMVERILOG_FILE RTL/VGA/playerBitMap.sv
 set_global_assignment -name SYSTEMVERILOG_FILE RTL/VGA/mif_draw.sv
 set_global_assignment -name SYSTEMVERILOG_FILE RTL/VGA/game_controller.sv
 set_global_assignment -name BDF_FILE RTL/VGA/Smiley_Block_T.bdf
@@ -400,7 +278,6 @@ set_global_assignment -name SYSTEMVERILOG_FILE RTL/AUDIO/audio_codec_controller/
 set_global_assignment -name QIP_FILE Number_position.qip
 set_global_assignment -name QIP_FILE CLK_31P5.qip
 set_global_assignment -name SIP_FILE CLK_31P5.sip
-set_global_assignment -name SIGNALTAP_FILE output_files/stp1.stp
 set_global_assignment -name BDF_FILE RTL/TOP.bdf
-set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
+set_global_assignment -name SLD_FILE db/stp1_auto_stripped.stp
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
