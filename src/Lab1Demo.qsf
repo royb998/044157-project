@@ -316,6 +316,15 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to altera_reserved_tdi
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to altera_reserved_tdo
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to altera_reserved_tms
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to resetN_pin
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to bordersDrawReq
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[3]
+set_global_assignment -name SYSTEMVERILOG_FILE RTL/VGA/player_move.sv
+set_global_assignment -name SYSTEMVERILOG_FILE RTL/player_move.sv
+set_global_assignment -name BDF_FILE RTL/VGA/Player.bdf
+set_global_assignment -name SYSTEMVERILOG_FILE RTL/VGA/playerBitMap.sv
 set_global_assignment -name SYSTEMVERILOG_FILE RTL/VGA/mif_draw.sv
 set_global_assignment -name SYSTEMVERILOG_FILE RTL/VGA/game_controller.sv
 set_global_assignment -name BDF_FILE RTL/VGA/Smiley_Block_T.bdf
@@ -326,7 +335,6 @@ set_global_assignment -name SYSTEMVERILOG_FILE RTL/VGA/smiley_move.sv
 set_global_assignment -name SYSTEMVERILOG_FILE RTL/VGA/objects_mux.sv
 set_global_assignment -name SYSTEMVERILOG_FILE RTL/VGA/VGA_Controller.sv
 set_global_assignment -name SYSTEMVERILOG_FILE RTL/VGA/NumbersBitMap.sv
-set_global_assignment -name QIP_FILE RTL/VGA/valX.qip
 set_global_assignment -name TCL_SCRIPT_FILE constraints/pin.tcl
 set_global_assignment -name BDF_FILE RTL/KEYBOARDX/TOP_KBD.bdf
 set_global_assignment -name SYSTEMVERILOG_FILE RTL/KEYBOARDX/lpf.sv
@@ -354,8 +362,5 @@ set_global_assignment -name QIP_FILE CLK_31P5.qip
 set_global_assignment -name SIP_FILE CLK_31P5.sip
 set_global_assignment -name SIGNALTAP_FILE output_files/stp1.stp
 set_global_assignment -name BDF_FILE RTL/TOP.bdf
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name SLD_FILE db/stp1_auto_stripped.stp
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
