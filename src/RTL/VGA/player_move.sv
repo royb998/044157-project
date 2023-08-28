@@ -7,13 +7,15 @@
 // updated to state machine Dudy March 2023
 
 
-module  smiley_move (
+module  player_move (
 
     input   logic   clk,
     input   logic   resetN,
     input   logic   startOfFrame,  // short pulse every start of frame 30Hz
-    input   logic   Y_direction_key,  //move Y Up
-    input   logic   toggle_x_key,   //toggle X
+    input   logic   up_key_pressed, //
+	 input   logic   down_key_pressed, 
+	 input   logic   right_key_pressed, 
+	 input   logic   left_key_pressed, 
     input   logic   collision,  //collision if smiley hits an object
     input   logic   [3:0] HitEdgeCode, //one bit per edge
 
@@ -27,7 +29,7 @@ module  smiley_move (
 parameter int INITIAL_X = 280;
 parameter int INITIAL_Y = 185;
 parameter int INITIAL_X_SPEED = 40;
-parameter int INITIAL_Y_SPEED = 20;
+parameter int INITIAL_Y_SPEED = 40;
 parameter int Y_ACCEL = -5;
 localparam int MAX_Y_speed = 400;
 const int   FIXED_POINT_MULTIPLIER  =   64; // note it must be 2^n
@@ -46,7 +48,8 @@ const int   x_FRAME_RIGHT   =   (639 - SafetyMargin - OBJECT_WIDTH_X)* FIXED_POI
 const int   y_FRAME_TOP     =   (SafetyMargin) * FIXED_POINT_MULTIPLIER;
 const int   y_FRAME_BOTTOM  =   (479 -SafetyMargin - OBJECT_HIGHT_Y) * FIXED_POINT_MULTIPLIER; //- OBJECT_HIGHT_Y
 
-enum  logic [2:0] {IDLE_ST, // initial state
+enum  logic [2:0] {INITIAL_ST, // initial state
+							IDLE_ST,
                     MOVE_ST, // moving no colision
                     WAIT_FOR_EOF_ST, // change speed done, wait for startOfFrame
                     POSITION_CHANGE_ST,// position interpolate
@@ -66,7 +69,7 @@ enum  logic [2:0] {IDLE_ST, // initial state
  always_ff @(posedge clk or negedge resetN)
         begin : fsm_sync_proc
             if (resetN == 1'b0) begin
-                SM_PS <= IDLE_ST;
+                SM_PS <= INITIAL_ST;
                 Xspeed_PS <= 0  ;
                 Yspeed_PS <= 0 ;
                 Xposition_PS <= 0 ;
@@ -80,7 +83,7 @@ enum  logic [2:0] {IDLE_ST, // initial state
                 Yspeed_PS    <=   Yspeed_NS ;
                 Xposition_PS <=  Xposition_NS   ;
                 Yposition_PS <=  Yposition_NS   ;
-                toggle_x_key_D = toggle_x_key;  //shift register to detect edge
+                //toggle_x_key_D = toggle_x_key;  //shift register to detect edge
             end;
         end // end fsm_sync
 
@@ -100,50 +103,86 @@ begin
 
     case(SM_PS)
 //------------
-        IDLE_ST: begin
-//------------
-		 Xspeed_NS  = INITIAL_X_SPEED ; 
-		 Yspeed_NS  = INITIAL_Y_SPEED  ; 
-		 Xposition_NS = INITIAL_X * FIXED_POINT_MULTIPLIER ; 
-		 Yposition_NS = INITIAL_Y * FIXED_POINT_MULTIPLIER ; 
-
-         if (startOfFrame)
-                SM_NS = MOVE_ST;
-
+        INITIAL_ST: begin
+//------------			
+				 Xspeed_NS  = 0; 
+				 Yspeed_NS  = 0; 
+				 Xposition_NS = INITIAL_X * FIXED_POINT_MULTIPLIER ; 
+				 Yposition_NS = INITIAL_Y * FIXED_POINT_MULTIPLIER ; 
+					SM_NS = IDLE_ST;
+						
     end
-
+//------------
+        IDLE_ST:  begin     
+//------------
+ 
+			if(down_key_pressed != up_key_pressed || left_key_pressed != right_key_pressed) begin
+				if(down_key_pressed != up_key_pressed) begin
+					if(down_key_pressed == 1)
+						Yspeed_NS  = INITIAL_Y_SPEED; 
+					else
+						Yspeed_NS  = -INITIAL_Y_SPEED;
+				end
+				if(left_key_pressed != right_key_pressed) begin
+					if(right_key_pressed == 1)
+						Xspeed_NS  = INITIAL_X_SPEED; 
+					else
+						Xspeed_NS  = -INITIAL_X_SPEED;
+				end
+				SM_NS = MOVE_ST;
+			end
+	end
+	 
+	 
 //------------
         MOVE_ST:  begin     // moving no colision
 //------------
+				if(down_key_pressed == up_key_pressed && left_key_pressed == right_key_pressed) begin
+					Yspeed_NS = 0;
+					Xspeed_NS = 0;
+					SM_NS = IDLE_ST;
+				end
+				else begin
+					if(down_key_pressed != up_key_pressed) begin
+						if(down_key_pressed == 1)
+							Yspeed_NS  = INITIAL_Y_SPEED; 
+						else
+							Yspeed_NS  = -INITIAL_Y_SPEED;
+					end
+					else
+						Yspeed_NS = 0;
+					if(left_key_pressed != right_key_pressed) begin
+						if(right_key_pressed == 1)
+							Xspeed_NS  = INITIAL_X_SPEED; 
+						else
+							Xspeed_NS  = -INITIAL_X_SPEED;
+					end
+					else
+						Xspeed_NS = 0;
+					if (collision) begin  //any collision was detected
 
+							  if (HitEdgeCode [2] == 1)  // hit top border of brick
+									if (Yspeed_PS < 0) // while moving up
+											  Yspeed_NS = 0;
 
-            if (Y_direction_key && (Yspeed_PS > 0))//  while moving down
-                        Yspeed_NS = -Yspeed_PS;
-            if (toggle_x_key & !toggle_x_key_D) //rizing edge
-                        Xspeed_NS = -Xspeed_PS; // toggle direction
+							  if (HitEdgeCode [0] == 1)// hit bottom border of brick
+									if (Yspeed_PS > 0)//  while moving down
+											  Yspeed_NS = 0;
 
-            if (collision) begin  //any collision was detected
+							  if (HitEdgeCode [3] == 1)
+									if (Xspeed_PS < 0) // while moving left
+											  Xspeed_NS = 0; // positive move right
 
-                    if (HitEdgeCode [2] == 1)  // hit top border of brick
-                        if (Yspeed_PS < 0) // while moving up
-                                Yspeed_NS = -Yspeed_PS;
+							  if (HitEdgeCode [1] == 1)   // hit right border of brick
+										 if (Xspeed_PS > 0) //  while moving right
+													Xspeed_NS = 0;  // negative move left
 
-                    if (HitEdgeCode [0] == 1)// hit bottom border of brick
-                        if (Yspeed_PS > 0)//  while moving down
-                                Yspeed_NS = -Yspeed_PS;
-
-                    if (HitEdgeCode [3] == 1)
-                        if (Xspeed_PS < 0) // while moving left
-                                Xspeed_NS = -Xspeed_PS; // positive move right
-
-                    if (HitEdgeCode [1] == 1)   // hit right border of brick
-                            if (Xspeed_PS > 0) //  while moving right
-                                    Xspeed_NS = -Xspeed_PS ;  // negative move left
-
-                    SM_NS = WAIT_FOR_EOF_ST;
-                end
-            if (startOfFrame)
-                SM_NS = POSITION_CHANGE_ST;
+							  SM_NS = WAIT_FOR_EOF_ST;
+					 end
+					 
+					if (startOfFrame)
+						 SM_NS = POSITION_CHANGE_ST;
+				 end
         end
 
 //--------------------
@@ -161,11 +200,9 @@ begin
              Xposition_NS = Xposition_PS + Xspeed_PS;
              Yposition_NS = Yposition_PS + Yspeed_PS;
 
-        // accelerate
-            if (Yspeed_PS <= MAX_Y_speed)
-                Yspeed_NS = Yspeed_PS  - Y_ACCEL; // deAccelerate : slow the speed down every clock tick
+        
 
-                SM_NS = POSITION_LIMITS_ST;
+             SM_NS = POSITION_LIMITS_ST;
         end
 
 
@@ -199,10 +236,10 @@ begin
                         begin
                             Yposition_NS = y_FRAME_BOTTOM;
                             if (Yspeed_PS > 0) // moving to the bottom
-                                    Yspeed_NS = 0; // stp
+                                    Yspeed_NS = 0; // change direction
                         end;
 
-            SM_NS = IDLE_ST;
+            SM_NS = MOVE_ST;
 
         end
 
