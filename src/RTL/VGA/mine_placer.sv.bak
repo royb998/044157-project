@@ -1,0 +1,19 @@
+
+module mine_placer (
+    input clk,    // Clock
+    input rst_n,  // Asynchronous reset active low
+    
+    input logic [1:0] row,
+    input logic [1:0] col,
+    
+    output logic valid,
+    output logic [9:0] pixel_x,
+    output logic [9:0] pixel_y
+);
+
+assign valid = ~(row[1] & row[0]);
+
+assign pixel_x = 10'ha0 + (10'h60 * row);
+assign pixel_y = 10'h80 + (10'h60 * col);
+
+endmodule : mine_placer
