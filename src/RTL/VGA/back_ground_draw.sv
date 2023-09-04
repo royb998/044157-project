@@ -76,27 +76,7 @@ begin
 					//bordersDrawReq <= 	1'b1; // pulse if drawing the borders
 			end
 
-
-
-	// 4. draw a matrix of 16*16 rectangles with all the colors, each rectsangle 8*8 pixels
-   // ---------------------------------------------------------------------------------------
-		if ((pixelY > 8) && (pixelY < 24) && (pixelX >30)&& (pixelX <542))
-		 begin
-		        shift_pixelX<= pixelX-29;
-
-             blueBits <= shift_pixelX[8:7];
-				 greenBits <= shift_pixelX[3:1];
-				 redBits <= shift_pixelX[6:4];
-				 bordersDrawReq <= 	1'b1;
-
-
-		 end
-
-
-
 	BG_RGB =  {redBits , greenBits , blueBits}; //collect color nibbles to an 8 bit word
-
-
 
 	end;
 end
