@@ -39,7 +39,7 @@
 
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CSXFC6D6F31C6
-set_global_assignment -name TOP_LEVEL_ENTITY TOP
+set_global_assignment -name TOP_LEVEL_ENTITY time_bomb_bitmap
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 17.0.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "15:51:54  JULY 08, 2018"
 set_global_assignment -name LAST_QUARTUS_VERSION "17.0.0 Lite Edition"
@@ -166,6 +166,9 @@ set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name ENABLE_SIGNALTAP ON
 set_global_assignment -name USE_SIGNALTAP_FILE output_files/stp1.stp
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUD_ADCDAT
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUDOUT[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to AUDOUT[1]
@@ -232,11 +235,14 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to altera_reserved_tdi
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to altera_reserved_tdo
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to altera_reserved_tms
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to resetN_pin
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to bordersDrawReq
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[3]
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name SOURCE_FILE CLK_31P5.cmp
+set_global_assignment -name VERILOG_FILE Number_position_bb.v
+set_global_assignment -name VERILOG_FILE matrix_top_xy.v
+set_global_assignment -name BDF_FILE RTL/VGA/time_bomb/timeBombTOP.bdf
+set_global_assignment -name SYSTEMVERILOG_FILE RTL/VGA/time_bomb/timeBombBitMap.sv
 set_global_assignment -name SYSTEMVERILOG_FILE RTL/VGA/mine_placer.sv
 set_global_assignment -name SYSTEMVERILOG_FILE RTL/VGA/mine_bitmap.sv
 set_global_assignment -name SYSTEMVERILOG_FILE RTL/VGA/player_move.sv
@@ -279,5 +285,3 @@ set_global_assignment -name QIP_FILE Number_position.qip
 set_global_assignment -name QIP_FILE CLK_31P5.qip
 set_global_assignment -name SIP_FILE CLK_31P5.sip
 set_global_assignment -name BDF_FILE RTL/TOP.bdf
-set_global_assignment -name SLD_FILE db/stp1_auto_stripped.stp
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
