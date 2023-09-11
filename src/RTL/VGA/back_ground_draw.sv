@@ -72,7 +72,7 @@ begin
 					redBits <= DARK_COLOR;
 					greenBits <= DARK_COLOR ;
 					blueBits <= DARK_COLOR;
-					 bordersDrawReq <= 	1'b1;
+					 bordersDrawReq <= 	1'b0;
 					//bordersDrawReq <= 	1'b1; // pulse if drawing the borders
 			end
 
