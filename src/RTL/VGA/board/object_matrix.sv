@@ -11,6 +11,7 @@ module object_matrix (
 
     output logic [10:0] tile_x, // top-left pixel of selected tile
     output logic [10:0] tile_y,
+    output logic mine_exploded,
     output logic [2:0] object, // indicator for object in selected tile
     output reg [3:0] mine_count
 );
@@ -47,8 +48,12 @@ logic add_mine_prev = 1'b0;
 logic add_mine_cur = 1'b0;
 logic add_mine_up = 1'b0;
 
+logic on_board;
+
 always_ff @(posedge clk or negedge rst_n) begin
     if (~rst_n) begin
+        mine_exploded <= 1'b0;
+
         collision_prev <= 1'b0;
         explosion_prev <= 1'b0;
         mine_count <= 4'h1;
@@ -68,22 +73,25 @@ always_ff @(posedge clk or negedge rst_n) begin
         };
     end
     else begin
-        case (objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order])
-            3'h0: if (add_mine_up && (mine_count < max_mines)) begin
-                    objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order] <= 3'h4;
-                    mine_count <= mine_count + 1;
-            end
-            3'h2: if (explosion_up) begin
-                    objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order] <= 3'h3;
-            end
-            3'h3: if (explosion_up) begin
-                    objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order] <= 3'h0;
-            end
-            3'h4: if (collision_up) begin
-                    objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order] <= 3'h0;
-                    mine_count <= mine_count - 1;
-            end
-        endcase
+        if (on_board) begin
+            case (objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order])
+                3'h0: if (add_mine_up && (mine_count < max_mines)) begin
+                        objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order] <= 3'h4;
+                        mine_count <= mine_count + 1;
+                end
+                3'h2: if (explosion_up) begin
+                        objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order] <= 3'h3;
+                end
+                3'h3: if (explosion_up) begin
+                        objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order] <= 3'h0;
+                end
+                3'h4: if (collision_up) begin
+                        objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order] <= 3'h0;
+                        mine_count <= mine_count - 1;
+                        mine_exploded = 1'b1;
+                end
+            endcase
+        end
 
         collision_cur <= collision;
         collision_prev <= collision_cur;
@@ -99,10 +107,11 @@ always_comb begin
     explosion_up <= (~explosion_prev) & explosion_cur;
     add_mine_up <= (~add_mine_prev) & add_mine_cur;
 
-    if (pixel_x < X_MATRIX ||
-        pixel_y < Y_MATRIX ||
-        pixel_x > X_MATRIX + (COLUMNS + 1) << tile_order ||
-        pixel_x > Y_MATRIX + (ROWS + 1) << tile_order) begin
+    on_board = (pixel_x >= X_MATRIX) && (pixel_y >= Y_MATRIX) &&
+               (pixel_x < X_MATRIX + (COLUMNS << tile_order)) &&
+               (pixel_y < Y_MATRIX + (ROWS << tile_order));
+
+    if (!on_board) begin
         tile_x = 11'h0;
         tile_y = 11'h0;
         object = 3'h0;

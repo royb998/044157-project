@@ -134,9 +134,9 @@ agreement for further details.
 )
 (pin
 	(output)
-	(rect 1328 264 1524 280)
+	(rect 1384 696 1562 712)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
-	(text "object_draw_request" (rect 90 0 190 12)(font "Arial" ))
+	(text "mine_count[3..0]" (rect 90 0 172 12)(font "Arial" ))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8)(pt 52 8))
@@ -150,7 +150,7 @@ agreement for further details.
 )
 (pin
 	(output)
-	(rect 1352 408 1528 424)
+	(rect 1384 624 1560 640)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
 	(text "objectRGB[7..0]" (rect 90 0 169 12)(font "Arial" ))
 	(pt 0 8)
@@ -166,9 +166,25 @@ agreement for further details.
 )
 (pin
 	(output)
-	(rect 1296 592 1474 608)
+	(rect 1384 600 1580 616)
 	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
-	(text "mine_count[3..0]" (rect 90 0 172 12)(font "Arial" ))
+	(text "object_draw_request" (rect 90 0 190 12)(font "Arial" ))
+	(pt 0 8)
+	(drawing
+		(line (pt 0 8)(pt 52 8))
+		(line (pt 52 4)(pt 78 4))
+		(line (pt 52 12)(pt 78 12))
+		(line (pt 52 12)(pt 52 4))
+		(line (pt 78 4)(pt 82 8))
+		(line (pt 82 8)(pt 78 12))
+		(line (pt 78 12)(pt 82 8))
+	)
+)
+(pin
+	(output)
+	(rect 1384 648 1560 664)
+	(text "OUTPUT" (rect 1 0 39 10)(font "Arial" (font_size 6)))
+	(text "mine_exploded" (rect 90 0 163 12)(font "Arial" ))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8)(pt 52 8))
@@ -940,12 +956,6 @@ agreement for further details.
 	(bus)
 )
 (connector
-	(text "object[2..0]" (rect 216 344 267 361)(font "Intel Clear" ))
-	(pt 208 360)
-	(pt 304 360)
-	(bus)
-)
-(connector
 	(text "clk" (rect 528 656 542 673)(font "Intel Clear" ))
 	(pt 520 672)
 	(pt 608 672)
@@ -1003,27 +1013,6 @@ agreement for further details.
 	(bus)
 )
 (connector
-	(text "mine_count[3..0]" (rect 215 360 294 377)(font "Intel Clear" ))
-	(pt 208 376)
-	(pt 304 376)
-	(bus)
-)
-(connector
-	(pt 1344 416)
-	(pt 1344 400)
-	(bus)
-)
-(connector
-	(pt 1352 416)
-	(pt 1344 416)
-	(bus)
-)
-(connector
-	(pt 1344 400)
-	(pt 1328 400)
-	(bus)
-)
-(connector
 	(text "object[2..0]" (rect 1240 464 1291 481)(font "Intel Clear" ))
 	(pt 1184 480)
 	(pt 1272 480)
@@ -1038,12 +1027,6 @@ agreement for further details.
 	(text "RGB[4..0][7..0]" (rect 1113 376 1181 393)(font "Intel Clear" ))
 	(pt 1120 392)
 	(pt 1216 392)
-	(bus)
-)
-(connector
-	(text "mine_count[3..0]" (rect 1199 584 1278 601)(font "Intel Clear" ))
-	(pt 1296 600)
-	(pt 1192 600)
 	(bus)
 )
 (connector
@@ -1065,5 +1048,28 @@ agreement for further details.
 (connector
 	(pt 1224 32)
 	(pt 1224 16)
+)
+(connector
+	(text "objectRBG[7..0]" (rect 1352 384 1425 401)(font "Intel Clear" ))
+	(pt 1328 400)
+	(pt 1440 400)
+	(bus)
+)
+(connector
+	(text "object_draw_request" (rect 1333 256 1432 273)(font "Intel Clear" ))
+	(pt 1328 272)
+	(pt 1440 272)
+)
+(connector
+	(text "object[2..0]" (rect 288 416 339 433)(font "Intel Clear" ))
+	(pt 280 432)
+	(pt 376 432)
+	(bus)
+)
+(connector
+	(text "mine_count[3..0]" (rect 287 432 366 449)(font "Intel Clear" ))
+	(pt 280 448)
+	(pt 376 448)
+	(bus)
 )
 (text "draw_request[1]" (rect 850 40 927 57)(font "Intel Clear" ))
