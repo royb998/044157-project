@@ -21,9 +21,9 @@ agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 200 128)
-	(text "mine_placer" (rect 5 0 53 12)(font "Arial" ))
-	(text "inst" (rect 8 96 20 108)(font "Arial" ))
+	(rect 16 16 256 160)
+	(text "playerBitMap" (rect 5 0 56 12)(font "Arial" ))
+	(text "inst" (rect 8 128 20 140)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -34,39 +34,59 @@ agreement for further details.
 	(port
 		(pt 0 48)
 		(input)
-		(text "rst_n" (rect 0 0 21 12)(font "Arial" ))
-		(text "rst_n" (rect 21 43 42 55)(font "Arial" ))
+		(text "resetN" (rect 0 0 27 12)(font "Arial" ))
+		(text "resetN" (rect 21 43 48 55)(font "Arial" ))
 		(line (pt 0 48)(pt 16 48)(line_width 1))
 	)
 	(port
 		(pt 0 64)
 		(input)
-		(text "row[3..0]" (rect 0 0 34 12)(font "Arial" ))
-		(text "row[3..0]" (rect 21 59 55 71)(font "Arial" ))
+		(text "offsetX[10..0]" (rect 0 0 53 12)(font "Arial" ))
+		(text "offsetX[10..0]" (rect 21 59 74 71)(font "Arial" ))
 		(line (pt 0 64)(pt 16 64)(line_width 3))
 	)
 	(port
 		(pt 0 80)
 		(input)
-		(text "col[4..0]" (rect 0 0 31 12)(font "Arial" ))
-		(text "col[4..0]" (rect 21 75 52 87)(font "Arial" ))
+		(text "offsetY[10..0]" (rect 0 0 54 12)(font "Arial" ))
+		(text "offsetY[10..0]" (rect 21 75 75 87)(font "Arial" ))
 		(line (pt 0 80)(pt 16 80)(line_width 3))
 	)
 	(port
-		(pt 184 32)
-		(output)
-		(text "pixel_x[10..0]" (rect 0 0 50 12)(font "Arial" ))
-		(text "pixel_x[10..0]" (rect 113 27 163 39)(font "Arial" ))
-		(line (pt 184 32)(pt 168 32)(line_width 3))
+		(pt 0 96)
+		(input)
+		(text "InsideRectangle" (rect 0 0 62 12)(font "Arial" ))
+		(text "InsideRectangle" (rect 21 91 83 103)(font "Arial" ))
+		(line (pt 0 96)(pt 16 96)(line_width 1))
 	)
 	(port
-		(pt 184 48)
+		(pt 240 32)
 		(output)
-		(text "pixel_y[10..0]" (rect 0 0 51 12)(font "Arial" ))
-		(text "pixel_y[10..0]" (rect 112 43 163 55)(font "Arial" ))
-		(line (pt 184 48)(pt 168 48)(line_width 3))
+		(text "drawingRequest" (rect 0 0 63 12)(font "Arial" ))
+		(text "drawingRequest" (rect 156 27 219 39)(font "Arial" ))
+		(line (pt 240 32)(pt 224 32)(line_width 1))
 	)
+	(port
+		(pt 240 48)
+		(output)
+		(text "RGBout[7..0]" (rect 0 0 53 12)(font "Arial" ))
+		(text "RGBout[7..0]" (rect 166 43 219 55)(font "Arial" ))
+		(line (pt 240 48)(pt 224 48)(line_width 3))
+	)
+	(port
+		(pt 240 64)
+		(output)
+		(text "HitEdgeCode[3..0]" (rect 0 0 73 12)(font "Arial" ))
+		(text "HitEdgeCode[3..0]" (rect 146 59 219 71)(font "Arial" ))
+		(line (pt 240 64)(pt 224 64)(line_width 3))
+	)
+	(parameter
+		"TRANSPARENT_ENCODING"
+		"00011100"
+		""
+		(type "PARAMETER_UNSIGNED_BIN")	)
 	(drawing
-		(rectangle (rect 16 16 168 96)(line_width 1))
+		(rectangle (rect 16 16 224 128)(line_width 1))
 	)
+	(annotation_block (parameter)(rect 256 -64 356 16))
 )
