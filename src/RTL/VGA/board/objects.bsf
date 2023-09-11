@@ -90,9 +90,16 @@ agreement for further details.
 	(port
 		(pt 256 64)
 		(output)
+		(text "mine_exploded" (rect 0 0 92 19)(font "Intel Clear" (font_size 8)))
+		(text "mine_exploded" (rect 143 59 235 78)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 64)(pt 240 64))
+	)
+	(port
+		(pt 256 80)
+		(output)
 		(text "mine_count[3..0]" (rect 0 0 99 19)(font "Intel Clear" (font_size 8)))
-		(text "mine_count[3..0]" (rect 136 59 235 78)(font "Intel Clear" (font_size 8)))
-		(line (pt 256 64)(pt 240 64)(line_width 3))
+		(text "mine_count[3..0]" (rect 136 75 235 94)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 80)(pt 240 80)(line_width 3))
 	)
 	(drawing
 		(rectangle (rect 16 16 240 144))
