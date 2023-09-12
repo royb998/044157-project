@@ -101,6 +101,13 @@ agreement for further details.
 		(text "mine_count[3..0]" (rect 136 75 235 94)(font "Intel Clear" (font_size 8)))
 		(line (pt 256 80)(pt 240 80)(line_width 3))
 	)
+	(port
+		(pt 256 96)
+		(output)
+		(text "game_won" (rect 0 0 63 19)(font "Intel Clear" (font_size 8)))
+		(text "game_won" (rect 172 91 235 110)(font "Intel Clear" (font_size 8)))
+		(line (pt 256 96)(pt 240 96))
+	)
 	(drawing
 		(rectangle (rect 16 16 240 144))
 	)
