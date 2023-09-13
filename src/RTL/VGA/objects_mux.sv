@@ -11,6 +11,8 @@ module  objects_mux (
     input logic clk,
     input logic resetN,
 
+    input logic endgameDrawingRequest,
+    input logic [7:0] endgameRGB,
     input logic playerDrawingRequest,
     input logic [7:0] playerRGB,
     input logic heartDrawingRequest,
@@ -29,13 +31,16 @@ always_ff@ (posedge clk or negedge resetN) begin
 
     /**
      * Prioritize drawing requests in the following order:
-     * 1. Player
-     * 2. Heart
-     * 3. Object (from matrix)
-     * 4. Background (i.e. MIF)
+     * 1. End screen
+     * 2. Player
+     * 3. Heart
+     * 4. Object (from matrix)
+     * 5. Background (i.e. MIF)
      */
     else begin
-        if (playerDrawingRequest == 1'b1) begin
+        if (endgameDrawingRequest == 1'b1) begin
+            RGBOut <= endgameRGB;
+        end else if (playerDrawingRequest == 1'b1) begin
             RGBOut <= playerRGB;
         end else if (heartDrawingRequest == 1'b1) begin
             RGBOut <= heartRGB;

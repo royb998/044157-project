@@ -10,6 +10,7 @@
 module  player_move (
 
     input   logic   clk,
+    input   logic   clk_en,
     input   logic   resetN,
     input   logic   startOfFrame,  // short pulse every start of frame 30Hz
     input   logic   up_key_pressed, //
@@ -137,7 +138,8 @@ begin
 //------------
         MOVE_ST:  begin     // moving no colision
 //------------
-				if(down_key_pressed == up_key_pressed && left_key_pressed == right_key_pressed) begin
+				if (~clk_en || (down_key_pressed == up_key_pressed &&
+					             left_key_pressed == right_key_pressed)) begin
 					Yspeed_NS = 0;
 					Xspeed_NS = 0;
 					SM_NS = IDLE_ST;

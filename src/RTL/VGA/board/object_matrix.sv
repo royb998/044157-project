@@ -6,8 +6,8 @@ module object_matrix (
     input logic [10:0] pixel_x,
     input logic [10:0] pixel_y,
     input logic collision, // indicates if there is a collision with the player on the current pixel
-    input logic explosion, // Indicates if there is an explosion in the current pixel
-    input logic add_mine,
+    input logic explosion, // Indicates explosion direction
+    input logic one_sec,
     input logic add_user_bomb,
     input logic is_player_location,
 
@@ -16,7 +16,8 @@ module object_matrix (
     output logic mine_exploded,
 	 output logic game_won,
     output logic [3:0] object, // indicator for object in selected tile
-    output reg [3:0] mine_count
+    output reg [3:0] mine_count,
+	 output logic pause_time
 );
 
 parameter logic [7:0] TRANSPARENT_COLOUR = 8'hFF;
@@ -38,7 +39,7 @@ parameter logic [3:0] tile_order = 5; // Tile size = 2**order
     7: Time booster
     8: User bomb
     9: Sturdy explosion
-    A: Other explosion
+    a: Brittle explosion
 */
 logic [0:ROWS - 1][0:COLUMNS - 1] [3:0] objects;
 
@@ -56,7 +57,12 @@ logic explosion_up = 1'b0;
 logic add_mine_prev = 1'b0;
 logic add_mine_cur = 1'b0;
 logic add_mine_up = 1'b0;
+logic splitter = 1'b0;
+logic mine_time_toggle = 1'b0;
+logic bomb_time_toggle = 1'b0;
 
+logic mine_time_toggle_off = 1'b0;
+logic bomb_time_toggle_off = 1'b0;
 logic on_board;
 
 always_ff @(posedge clk or negedge rst_n) begin
@@ -70,41 +76,43 @@ always_ff @(posedge clk or negedge rst_n) begin
         mine_count <= 4'h0;
 
         objects <= {
-            {4'h0, 4'h2, 4'h5, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h7},
+            {4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h2, 4'h3, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h5, 4'h3, 4'h0, 4'h0, 4'h7},
             {4'h0, 4'h1, 4'h0, 4'h1, 4'h0, 4'h1, 4'h0, 4'h1, 4'h0, 4'h1, 4'h0, 4'h1, 4'h2, 4'h1, 4'h2, 4'h1, 4'h0},
             {4'h0, 4'h2, 4'h2, 4'h5, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h2, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h2, 4'h0},
             {4'h0, 4'h1, 4'h3, 4'h1, 4'h0, 4'h1, 4'h2, 4'h1, 4'h2, 4'h1, 4'h0, 4'h1, 4'h0, 4'h1, 4'h2, 4'h1, 4'h0},
-            {4'h0, 4'h0, 4'h0, 4'h5, 4'h0, 4'h3, 4'h0, 4'h0, 4'h0, 4'h2, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0},
-            {4'h0, 4'h1, 4'h2, 4'h1, 4'h2, 4'h1, 4'h0, 4'h1, 4'h0, 4'h1, 4'h0, 4'h1, 4'h0, 4'h1, 4'h0, 4'h1, 4'h0},
-            {4'h0, 4'h0, 4'h2, 4'h3, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h2, 4'h0, 4'h0, 4'h0, 4'h2, 4'h3, 4'h3, 4'h0},
+            {4'h0, 4'h0, 4'h0, 4'h5, 4'h0, 4'h3, 4'h0, 4'h0, 4'h0, 4'h2, 4'h0, 4'h3, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0},
+            {4'h0, 4'h1, 4'h2, 4'h1, 4'h0, 4'h1, 4'h0, 4'h1, 4'h0, 4'h1, 4'h2, 4'h1, 4'h0, 4'h1, 4'h0, 4'h1, 4'h0},
+            {4'h0, 4'h0, 4'h2, 4'h3, 4'h0, 4'h9, 4'h0, 4'h0, 4'h0, 4'h2, 4'h0, 4'h0, 4'h0, 4'h2, 4'h3, 4'h3, 4'h0},
             {4'h0, 4'h1, 4'h2, 4'h1, 4'h2, 4'h1, 4'h0, 4'h1, 4'h0, 4'h1, 4'h0, 4'h1, 4'h0, 4'h1, 4'h0, 4'h1, 4'h0},
             {4'h0, 4'h0, 4'h5, 4'h2, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h3, 4'h3},
             {4'h0, 4'h1, 4'h0, 4'h1, 4'h0, 4'h1, 4'h0, 4'h1, 4'h0, 4'h1, 4'h0, 4'h1, 4'h2, 4'h1, 4'h3, 4'h1, 4'h2},
-            {4'h7, 4'h0, 4'h0, 4'h2, 4'h3, 4'h2, 4'h2, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h0, 4'h3, 4'h2, 4'h6},
+            {4'h7, 4'h0, 4'h0, 4'h2, 4'h3, 4'h2, 4'h2, 4'h0, 4'h0, 4'h0, 4'h3, 4'h0, 4'h0, 4'h0, 4'h3, 4'h2, 4'h6},
         };
     end
     else begin
         mine_exploded <= 1'b0;
-        game_won <= 1'b0;
 
+        if(one_sec) begin
+            if(splitter) begin
+                mine_time_toggle <= 1'b1;
+                bomb_time_toggle <= 1'b1;
+                splitter <= 1'b0;
+            end
+            else begin
+                splitter <= 1'b1;
+            end
+        end
         if (on_board) begin
             case (objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order])
                 4'h0: begin
-                    if (add_mine_up && (mine_count < max_mines)) begin
-                        objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order] <= 4'h4;
-                        mine_count <= mine_count + 1;
-                    end else if (add_user_bomb && is_player_location && (bomb_count < max_bombs)) begin
+                    if (add_user_bomb && is_player_location && (bomb_count < max_bombs)) begin
                         objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order] <= 4'h8;
-                    end
-                end
-                4'h2: begin
-                    if (explosion_up) begin
-                        objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order] <= 4'h3;
-                    end
-                end
-                4'h3: begin
-                    if (explosion_up) begin
-                        objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order] <= 4'h0;
+                        bomb_count <= bomb_count + 4'h1;
+                        bomb_time_toggle <= 1'b0;
+                    end else if (mine_time_toggle && (mine_count < max_mines)) begin
+                        objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order] <= 4'h4;
+                        mine_count <= mine_count + 4'h1;
+                        mine_time_toggle <= 1'b0;
                     end
                 end
                 4'h4: begin
@@ -112,22 +120,79 @@ always_ff @(posedge clk or negedge rst_n) begin
                         objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order] <= 4'h0;
                         mine_count <= mine_count - 1;
                         mine_exploded <= 1'b1;
-                    end else if (explosion_up) begin
-                        objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order] <= 4'h0;
-                        mine_count <= mine_count - 1;
-                    end
+                    end 
                 end
                 4'h5: begin
                     if (collision_up) begin
                             objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order] <= 4'h0;
                             mine_exploded <= 1'b1;
-                    end else if (explosion_up) begin
-                            objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order] <= 4'h0;
-                    end
+                    end 
                 end
                 4'h6: begin
                     if (collision_up) begin
                         game_won <= 1'b1;
+                    end
+                end
+                4'h7: begin
+                    if (collision_up) begin
+                        pause_time <= 1'b1;
+                        objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order] <= 4'h0;
+                    end
+                end
+                4'h8: begin
+                    if(bomb_time_toggle) begin
+                        objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order] <= 4'ha;
+								bomb_count <= bomb_count - 4'h1;
+                        if (explosion) begin
+                            if (((pixel_y - Y_MATRIX) >> tile_order) != 0) begin
+                                if(objects[((pixel_y - Y_MATRIX) >> tile_order) - 1][(pixel_x - X_MATRIX) >> tile_order] != 4'h1) begin
+                                    if(objects[((pixel_y - Y_MATRIX) >> tile_order) - 1][(pixel_x - X_MATRIX) >> tile_order] == 4'h2) begin
+                                        objects[((pixel_y - Y_MATRIX) >> tile_order) - 1][(pixel_x - X_MATRIX) >> tile_order] <= 4'h9;
+                                    end else begin
+                                        objects[((pixel_y - Y_MATRIX) >> tile_order) - 1][(pixel_x - X_MATRIX) >> tile_order] <= 4'ha;
+                                    end
+                                end
+                            end
+                            if(((pixel_y - Y_MATRIX) >> tile_order) != ROWS - 1) begin
+                                if(objects[((pixel_y - Y_MATRIX) >> tile_order) + 1][(pixel_x - X_MATRIX) >> tile_order] != 4'h1) begin
+                                    if(objects[((pixel_y - Y_MATRIX) >> tile_order) + 1][(pixel_x - X_MATRIX) >> tile_order] == 4'h2) begin
+                                        objects[((pixel_y - Y_MATRIX) >> tile_order) + 1][(pixel_x - X_MATRIX) >> tile_order] <= 4'h9;
+                                    end else begin
+                                        objects[((pixel_y - Y_MATRIX) >> tile_order) + 1][(pixel_x - X_MATRIX) >> tile_order] <= 4'ha;
+                                    end
+                                end
+                            end
+                        end else begin
+                            if(((pixel_x - X_MATRIX) >> tile_order) != 0) begin
+                                if(objects[(pixel_y - Y_MATRIX) >> tile_order][((pixel_x - X_MATRIX) >> tile_order) - 1] != 4'h1) begin
+                                    if(objects[(pixel_y - Y_MATRIX) >> tile_order][((pixel_x - X_MATRIX) >> tile_order) - 1] == 4'h2) begin
+                                        objects[(pixel_y - Y_MATRIX) >> tile_order][((pixel_x - X_MATRIX) >> tile_order) - 1] <= 4'h9;
+                                    end else begin
+                                        objects[(pixel_y - Y_MATRIX) >> tile_order][((pixel_x - X_MATRIX) >> tile_order) - 1] <= 4'ha;
+                                    end
+                                end
+                            end
+                            if(((pixel_x - X_MATRIX) >> tile_order) != COLUMNS - 1) begin
+                                if(objects[(pixel_y - Y_MATRIX) >> tile_order][((pixel_x - X_MATRIX) >> tile_order) + 1] != 4'h1) begin
+                                    if(objects[(pixel_y - Y_MATRIX) >> tile_order][((pixel_x - X_MATRIX) >> tile_order) + 1] == 4'h2) begin
+                                        objects[(pixel_y - Y_MATRIX) >> tile_order][((pixel_x - X_MATRIX) >> tile_order) + 1] <= 4'h9;
+                                    end else begin
+                                        objects[(pixel_y - Y_MATRIX) >> tile_order][((pixel_x - X_MATRIX) >> tile_order) + 1] <= 4'ha;
+                                    end
+                                end
+                            end
+                        end
+                        bomb_time_toggle <= 1'b0;
+                    end
+                end
+                4'h9: begin
+                    if (splitter) begin
+                        objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order] <= 4'h3;
+                    end
+                end
+                4'ha: begin
+                    if (splitter) begin
+                        objects[(pixel_y - Y_MATRIX) >> tile_order][(pixel_x - X_MATRIX) >> tile_order] <= 4'h0;
                     end
                 end
             endcase
@@ -135,17 +200,14 @@ always_ff @(posedge clk or negedge rst_n) begin
 
         collision_cur <= collision;
         collision_prev <= collision_cur;
-        explosion_cur <= explosion;
-        explosion_prev <= explosion_cur;
-        add_mine_cur <= add_mine;
+        add_mine_cur <= one_sec;
         add_mine_prev <= add_mine_cur;
     end
 end
 
 always_comb begin
-    collision_up <= (~collision_prev) & collision_cur;
-    explosion_up <= (~explosion_prev) & explosion_cur;
-    add_mine_up <= (~add_mine_prev) & add_mine_cur;
+    collision_up = (~collision_prev) & collision_cur;
+    //add_mine_up <= (~add_mine_prev) & add_mine_cur;
 
     on_board = (pixel_x >= X_MATRIX) && (pixel_y >= Y_MATRIX) &&
                (pixel_x < X_MATRIX + (COLUMNS << tile_order)) &&
